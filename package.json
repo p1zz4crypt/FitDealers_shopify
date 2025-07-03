@@ -4,9 +4,10 @@
   "description": "Proyecto Fit Dealers Proof con Tailwind CSS",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
     "dev": "concurrently \"shopify theme dev -e development\" \"npx @tailwindcss/cli -i ./assets/tailwind-input.css -o ./assets/tailwind-output.css --watch\"",
+    "start:dev": "npm run dev",
     "build:css": "tailwindcss -i ./assets/tailwind-input.css -o ./assets/tailwind-output.css --minify",
+    "push": "shopify theme push -e development",
     "test": "echo \"No hay pruebas definidas\" && exit 0"
   },
   "keywords": [
