@@ -1,0 +1,126 @@
+{% schema %}
+{
+  "name": "Menu Bar",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_links",
+      "label": "Menú principal"
+    },
+   
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Color de fondo",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color de texto",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [{ "name": "Menu Bar", "category": "Header" }]
+}
+{% endschema %}
+
+<header
+  class="sticky top-0 z-40 w-full"
+  style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};"
+>
+  <div class="container mx-auto flex items-center justify-between py-3 px-4">
+    <!-- Logo -->
+    <a href="/" class="flex-shrink-0 text-lg">
+      {% if section.settings.logo %}
+        <img
+          src="{{ section.settings.logo | image_url: width:200 }}"
+          alt="{{ shop.name }}"
+          class="h-8"
+          width="200"
+          height="auto"
+        >
+      {% else %}
+        <span class="font-bold text-lg">{{ shop.name }}</span>
+      {% endif %}
+    </a>
+
+    <!-- Menú desktop -->
+    <nav class="hidden lg:flex space-x-6">
+      {% for link in linklists[section.settings.menu_links].links %}
+        <a href="{{ link.url }}" class="hover:underline text-lg">{{ link.title }}</a>
+      {% endfor %}
+    </nav>
+
+    <!-- Controles: búsqueda, usuario, carrito, móvil -->
+    <div class="flex items-center space-x-4">
+      <!-- Search icon -->
+      <a href="{{ section.settings.search_page }}" aria-label="Buscar">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+        </svg>
+      </a>
+
+      <!-- User icon -->
+      <a href="{{ section.settings.account_link }}" aria-label="Cuenta">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5.121 17.804A10.05 10.05 0 0 1 12 15c2.757 0 5.268 1.023 7.121 2.804M15 11
+                   a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </svg>
+      </a>
+
+      <!-- Cart icon (abre drawer) -->
+      <button
+        type="button"
+        class="relative"
+        data-drawer-trigger="cart-drawer"
+        aria-label="Carrito"
+      >
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 6h14l-2-6M17 13l2-6"/>
+        </svg>
+        <span
+          class="
+            absolute top-0 right-0 inline-flex items-center justify-center
+            px-1 text-xs font-bold leading-none text-red-500 bg-white rounded-full
+          "
+        >
+          {{ cart.item_count }}
+        </span>
+      </button>
+
+      <!-- Botón menú móvil -->
+      <button id="menu-toggle" class="lg:hidden">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú móvil -->
+  <nav id="mobile-menu" class="hidden bg-white text-black">
+    <ul class="flex flex-col p-4 space-y-2">
+      {% for link in linklists[section.settings.menu_links].links %}
+        <li>
+          <a href="{{ link.url }}" class="block">{{ link.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</header>
