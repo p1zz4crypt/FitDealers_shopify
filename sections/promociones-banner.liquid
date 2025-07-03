@@ -1,0 +1,48 @@
+{% schema %}
+{
+  "name": "Promo Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "prefix_text",
+      "label": "Texto previo",
+      "default": "🚀 Nuevos clientes:"
+    },
+    {
+      "type": "text",
+      "id": "discount_amount",
+      "label": "Descuento (texto)",
+      "default": "15% off"
+    },
+    {
+      "type": "text",
+      "id": "code_text",
+      "label": "Código de descuento",
+      "default": "WELCOME"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "URL al hacer clic",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Banner",
+      "category": "Marketing"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="w-full border border-yellow-400 bg-black text-yellow-400 text-sm">
+  <div class="container mx-auto flex items-center justify-center py-2 px-4">
+    <a href="{{ section.settings.link }}" class="flex items-center space-x-1">
+      <span>{{ section.settings.prefix_text }}</span>
+      <span class="font-semibold">{{ section.settings.discount_amount }}</span>
+      <span>con código</span>
+      <span class="font-mono bg-yellow-400 text-black px-1 rounded">{{ section.settings.code_text }}</span>
+    </a>
+  </div>
+</div>
