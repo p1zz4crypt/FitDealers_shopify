@@ -299,6 +299,7 @@
     </script>
     {{ 'tailwind-output.css' | asset_url | stylesheet_tag }}
   </head>
+  
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     {% section 'promociones-banner' %}
   {% section 'menu-bar' %}
@@ -313,7 +314,6 @@
     {% sections 'header-group' %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-      <div class="bg-green-500 h-64 w-full">Holi crayoli pincy gatoli</div>
       {{ content_for_layout }}
     </main>
 
@@ -376,5 +376,15 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <script>
+  function toggleSubscription(isSub) {
+    document.getElementById('purchase_option').value = isSub ? 'Suscripción' : 'Compra única';
+  }
+
+  function setFrequency(value) {
+    document.getElementById('subscription_frequency').value = value;
+  }
+</script>
   </body>
 </html>

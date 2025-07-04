@@ -74,7 +74,7 @@
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="w-full bg-yellow-400 text-black font-semibold py-3 rounded hover:opacity-90 transition mb-6"
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null

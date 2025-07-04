@@ -252,7 +252,8 @@
                     </span>
                   </label>
                   <div class="price-per-item__container">
-                    <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
+                    {% render 'quantity-input', variant: product.selected_or_first_available_variant %}
+                    {% comment %} <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
                       <button class="quantity__button" name="minus" type="button">
                         <span class="visually-hidden">
                           {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
@@ -285,7 +286,7 @@
                           {{- 'icon-plus.svg' | inline_asset_content -}}
                         </span>
                       </button>
-                    </quantity-input>
+                    </quantity-input> {% endcomment %}
                     {%- liquid
                       assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
                       assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.min
@@ -464,7 +465,67 @@
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-              {%- when 'buy_buttons' -%}
+                {%- when 'buy_buttons' -%}
+                  
+                  {% comment %} Planes de pago: {% endcomment %}
+
+                  {% assign tiene_suscripcion = product.metafields.custom.tiene_suscripcion.value %}
+{% assign precio_suscripcion = product.metafields.custom.precio_suscripcion %}
+{% assign frecuencias = product.metafields.custom.frecuencias_suscripcion.value %}
+
+{% if tiene_suscripcion %}
+  <div class="subscription-options  rounded overflow-hidden mb-4" >
+    
+    <label class="block p-4 cursor-pointer hover:bg-gray-50 mb-6" style="border: 2px solid #000000; border-radius: 0.5rem; ">
+      <input type="radio" name="purchase_type" value="onetime" checked class="sr-only" onchange="toggleSubscription(false)">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="font-semibold">Compra única</p>
+          <p class="text-sm text-gray-600">17 porciones (2–3 semanas con 1 shake/día)</p>
+        </div>
+        <p class="font-semibold">{{ product.price | money }}</p>
+      </div>
+    </label>
+
+    
+    <label class="block p-4 cursor-pointer hover:bg-gray-50" style="border: 2px solid #000000; border-radius: 0.5rem; ">
+      <label class="block bg-black text-white p-2 text-center text-base mb-3" >
+        💎 15% de descuento en cada pedido
+      </label>
+      <input type="radio" name="purchase_type" value="subscribe" class="sr-only" onchange="toggleSubscription(true)">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="font-semibold text-3xl">Suscríbete y Ahorra</p>
+          <ul class=" text-gray-700 text-base mt-1 list-disc list-inside space-y-1">
+            <li>Precio más bajo</li>
+            <li>Recibe más porciones en cada entrega</li>
+            <li>Cambia sabor o pausa en cualquier momento</li>
+            <li>Cancela al instante</li>
+          </ul>
+          <p class="mt-2">Elige la frecuencia:</p>
+          <div class="flex gap-2 mt-1">
+            {% for frecuencia in frecuencias %}
+              <button type="button" class="mr-5 pointer bg-gray-100  px-3 py-1 rounded hover:to-black" style="border: 1px solid #000000; border-radius: 0.5rem; " onclick="setFrequency('{{ frecuencia }}')">
+                {{ frecuencia }}
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+        <p class="font-semibold text-green-600">
+          {{ precio_suscripcion | money }}
+          <span class="text-sm">(-15%)</span>
+        </p>
+      </div>
+    </label>
+
+  </div>
+
+  <input type="hidden" name="properties[Tipo de compra]" id="purchase_option" value="onetime">
+  <input type="hidden" name="properties[Frecuencia]" id="subscription_frequency" value="">
+{% endif %}
+
+
+{% comment %} Botones de compra {% endcomment %}
                 {%- render 'buy-buttons',
                   block: block,
                   product: product,
@@ -472,6 +533,11 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                
+
+
+
+
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
