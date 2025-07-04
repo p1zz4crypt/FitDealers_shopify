@@ -1,0 +1,86 @@
+<div class="product-detail-ui max-w-3xl">
+    {% comment %} Calificación y encabezado {% endcomment %}
+    {% assign rating = product.metafields.custom.calificacion | round: 1 %}
+    {% if rating %}
+    <div class="flex items-center gap-2 mb-4">
+        {% for i in (1..5) %}
+        {% if i <= rating %} <span class="text-yellow-400 text-3xl">★</span>
+            {% else %}
+            <span class="text-gray-300 text-xl">☆</span>
+            {% endif %}
+            {% endfor %}
+            <span class="text-lg text-gray-500">({{ rating }}/5)</span>
+    </div>
+    {% endif %}
+
+    <h1 class="text-3xl font-bold">{{ product.title }}</h1>
+    <p class=" text-gray-500">{{ product.vendor }}</p>
+
+    {% comment %} Etiquetas informativas {% endcomment %}
+    <div class="flex gap-2 my-4 flex-wrap">
+        {% if product.metafields.custom.porciones %}
+        <span class="bg-yellow-400 text-black   px-3 py-1 rounded font-medium">
+            {{ product.metafields.custom.porciones }} porciones
+        </span>
+        {% endif %}
+
+        {% if product.metafields.custom.precio_por_porcion %}
+        <span class="bg-yellow-400 text-black  px-3 py-1 rounded font-medium">
+            ${{ product.metafields.custom.precio_por_porcion }} por porción
+        </span>
+        {% endif %}
+
+        {% if product.metafields.custom.atributos_alimentarios.value %}
+        {% assign atributos = product.metafields.custom.atributos_alimentarios.value %}
+        {% assign emoji_keys = "Gluten Free,Sin azúcar,Keto Friendly,Vegano,Hidratación,Sin lactosa" | split: "," %}
+        {% assign emoji_values = "🚫,🚫,🥩✅,🌱,💧,🥛🚫" | split: "," %}
+
+        {% for atributo in atributos %}
+        {% assign emoji = "" %}
+        {% for key in emoji_keys %}
+        {% if key == atributo %}
+        {% assign index = forloop.index0 %}
+        {% assign emoji = emoji_values[index] %}
+        {% endif %}
+        {% endfor %}
+        <span class="bg-yellow-400 text-black text-base px-3 py-1 rounded font-medium whitespace-nowrap">
+            {{ emoji }} {{ atributo }}
+        </span>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+
+    {% comment %} Nutrientes e ingredientes {% endcomment %}
+    {% if product.metafields.custom.nutricion_ingredientes %}
+    <details class="mb-6">
+        <summary class="cursor-pointer font-semibold underline  text-gray-700">🧪 Nutrición & Ingredientes
+        </summary>
+        <div class="mt-2  text-gray-700">
+            {{ product.metafields.custom.nutricion_ingredientes | metafield_tag }}
+        </div>
+    </details>
+    {% endif %}
+
+    {% comment %} Beneficios del producto (metaobjeto) {% endcomment %}
+    {% assign beneficios = product.metafields.custom.beneficios_producto.value %}
+    {% if beneficios %}
+    <div class="mb-6">
+        <h3 class="text-lg font-bold mb-2">💪 Beneficios</h3>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {% for beneficio in beneficios %}
+            <li class="p-4 border rounded bg-gray-50 flex gap-2 items-start">
+                {% if beneficio.imagen %}
+                <img src="{{ beneficio.imagen | image_url: width: 48 }}" alt="{{ beneficio.titulo }}"
+                    class="w-10 h-10 object-contain" width="40" height="40">
+                {% endif %}
+                <div>
+                    <h4 class="font-semibold">{{ beneficio.titulo }}</h4>
+                    <p class=" text-gray-700">{{ beneficio.descripcion }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>

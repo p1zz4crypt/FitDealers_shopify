@@ -194,7 +194,8 @@
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {{ product.description }}
+                    {% comment %} {{ product.description }} {% endcomment %}
+                    {% render 'product-nutricion-beneficios' %}
                   </div>
                 {%- endif -%}
               {%- when 'sku' -%}
@@ -712,9 +713,9 @@
 
     {%- liquid
       if product.selected_or_first_available_variant.featured_media
-        assign seo_media = product.selected_or_first_available_variant.featured_media
+        # assign seo_media = product.selected_or_first_available_variant.featured_media
       else
-        assign seo_media = product.featured_media
+        # assign seo_media = product.featured_media
       endif
     -%}
 

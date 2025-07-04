@@ -299,9 +299,9 @@
     </script>
     {{ 'tailwind-output.css' | asset_url | stylesheet_tag }}
   </head>
-  {% section 'promociones-banner' %}
-{% section 'menu-bar' %}
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+    {% section 'promociones-banner' %}
+  {% section 'menu-bar' %}
   <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
