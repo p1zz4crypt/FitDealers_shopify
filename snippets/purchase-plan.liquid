@@ -1,0 +1,69 @@
+{% comment %} Snippet: purchase-plan.liquid {% endcomment %}
+{% assign tiene_suscripcion = product.metafields.custom.tiene_suscripcion.value %}
+{% assign precio_suscripcion = product.metafields.custom.precio_suscripcion %}
+{% assign frecuencias = product.metafields.custom.frecuencias_suscripcion.value %}
+
+{% if tiene_suscripcion %}
+  <div class="subscription-options rounded-lg overflow-hidden mb-6">
+
+    <!-- Compra Única -->
+    <label class="block p-4 cursor-pointer border-2 rounded-lg mb-4 hover:bg-gray-50 transition-all flex justify-between items-start gap-4"
+           for="purchase_onetime">
+      <div class="flex gap-2 ">
+        <input type="radio" id="purchase_onetime" name="purchase_type" value="onetime"
+               class="accent-black mt-1 mr-3"
+               onchange="toggleSubscription(false)" checked>
+        <div>
+          <p class="font-semibold">Compra única</p>
+          <p class="text-sm text-gray-600">17 porciones (2–3 semanas con 1 shake/día)</p>
+        </div>
+      </div>
+      <p class="font-semibold">{{ product.price | money }}</p>
+    </label>
+
+    <!-- Suscripción -->
+    <label class="block p-4 cursor-pointer border-2 rounded-lg hover:bg-gray-50 transition-all"
+           for="purchase_subscribe">
+      <div class="bg-black text-white p-2 text-center text-sm mb-3 rounded">
+        💎 15% de descuento en cada pedido
+      </div>
+      <div class="flex justify-between items-start gap-4">
+        <div class="flex gap-2">
+          <input type="radio" id="purchase_subscribe" name="purchase_type" value="subscribe"
+                 class="accent-black mt-1 mr-3"
+                 onchange="toggleSubscription(true)">
+          <div>
+            <p class="font-semibold">Suscríbete y Ahorra</p>
+            <ul class="text-sm text-gray-700 mt-1 list-disc list-inside space-y-1">
+              <li>Precio más bajo</li>
+              <li>Recibe más porciones en cada entrega</li>
+              <li>Cambia sabor o pausa en cualquier momento</li>
+              <li>Cancela al instante</li>
+            </ul>
+
+            <p class="mt-2 font-semibold">Elige la frecuencia:</p>
+            <div class="flex flex-wrap gap-2 mt-1">
+              {% for frecuencia in frecuencias %}
+                <button type="button"
+                        data-frequency-button
+                        class="bg-gray-100 border cursor-pointer border-black px-3 py-1 rounded hover:bg-black hover:text-white transition-all"
+                        onclick="setFrequency('{{ frecuencia }}')">
+                  {{ frecuencia }}
+                </button>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <p class="font-semibold text-green-600 text-right whitespace-nowrap">
+          {{ precio_suscripcion | money }}
+          <span class="text-sm">(-15%)</span>
+        </p>
+      </div>
+    </label>
+
+  </div>
+
+  <!-- Campos ocultos para enviar en el formulario -->
+  <input type="hidden" name="properties[Tipo de compra]" id="purchase_option" value="onetime">
+  <input type="hidden" name="properties[Frecuencia]" id="subscription_frequency" value="">
+{% endif %}

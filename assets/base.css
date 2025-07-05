@@ -1382,6 +1382,8 @@ shopify-accelerated-checkout-cart {
 .share-button {
   display: block;
   position: relative;
+  border: 2px solid red;
+  text-align: end;
 }
 
 .share-button details {
@@ -1991,6 +1993,7 @@ input[type='checkbox'] {
 }
 
 .quantity__input[type='number'] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 

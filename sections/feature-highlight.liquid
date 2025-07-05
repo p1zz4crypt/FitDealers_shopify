@@ -1,0 +1,103 @@
+<section class="flex flex-col md:flex-row justify-between items-center py-12 px-6 bg-black text-white">
+  <div class="w-full md:w-1/2 space-y-4">
+    <h2 class="text-2xl font-bold">{{ section.settings.title }}</h2>
+    <div class="text-yellow-400 font-semibold">{{ section.settings.subtitle }}</div>
+    <p class="text-gray-300">{{ section.settings.description }}</p>
+    <ul class="grid grid-cols-2 gap-4 mt-4">
+      {% for block in section.blocks %}
+        <li class="flex items-start space-x-2">
+          {% if block.settings.icon != 'none' %}
+            <span>{{ block.settings.icon }}</span>
+          {% endif %}
+          <div>
+            <div class="font-bold">{{ block.settings.value }}</div>
+            <div class="text-sm text-gray-400">{{ block.settings.label }}</div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="w-full md:w-1/2 mt-6 md:mt-0">
+    {% if section.settings.image != blank %}
+      <img 
+        src="{{ section.settings.image | image_url }}" 
+        alt="Imagen destacada" 
+        class="rounded-lg shadow-lg"
+        width="{{ section.settings.image.width | default: 600 }}"
+        height="{{ section.settings.image.height | default: 400 }}"
+      >
+    {% endif %}
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Panel informativo",
+  "tag": "section",
+  "class": "info-split-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título principal",
+      "default": "Nutrición limpia, resultados reales"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtítulo o énfasis",
+      "default": "<p>Más músculo, mayor rendimiento y bienestar diario en un solo scoop</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Descripción",
+      "default": "Descubre las cifras que respaldan nuestro Whey Prime:"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen lateral"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Beneficio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Valor",
+          "default": "25g"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Descripción",
+          "default": "Proteína pura por scoop"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Ícono opcional",
+          "default": "check",
+          "options": [
+            { "value": "none", "label": "Sin ícono" },
+            { "value": "check", "label": "✔" },
+            { "value": "x", "label": "✖" },
+            { "value": "flag", "label": "🇺🇸" },
+            { "value": "leaf", "label": "🌿" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sección informativa con datos"
+    }
+  ]
+}
+{% endschema %}

@@ -147,14 +147,6 @@
           "code_text": "WELCOME",
           "link": "shopify://collections/all"
         }
-      },
-      "menu-bar": {
-        "type": "menu-bar",
-        "settings": {
-          "menu_links": "",
-          "bg_color": "#000000",
-          "text_color": "#ffffff"
-        }
       }
     },
     "content_for_index": [],

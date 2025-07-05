@@ -285,7 +285,7 @@
         {%- endcase -%}
       {%- endfor -%}
 
-      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+      {% comment %} <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {% if cart == empty %}
           <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
         {% else %}
@@ -300,7 +300,15 @@
             <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
           </div>
         {%- endif -%}
-      </a>
+      </a> {% endcomment %}
+      <button type="button"
+        class="header__icon header__icon--cart link focus-inset"
+        id="cart-icon-bubble"
+        data-action="open-drawer"
+        aria-controls="CartDrawer"
+        aria-expanded="false">
+  {{ 'icon-cart.svg' | inline_asset_content }}
+</button>
     </div>
   </header>
 </{{ header_tag }}>
