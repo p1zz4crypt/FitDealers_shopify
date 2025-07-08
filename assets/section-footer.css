@@ -1,5 +1,10 @@
 .footer {
   border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  background-image: url('fondo_footer.png');
+      background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: 82px;
 }
 
 .footer:not(.color-scheme-1) {
@@ -128,8 +133,8 @@
 .footer-block--newsletter {
   display: flex;
   align-items: flex-end;
-  margin-top: 3rem;
   gap: 1rem;
+
 }
 
 .footer-block--newsletter:only-child {

@@ -324,9 +324,9 @@
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
 
-    <button data-action="open-drawer" aria-controls="CartDrawer" class="fixed z-0 bottom-4 right-4 bg-yellow-400 px-4 py-2 rounded text-black">
+    {% comment %} <button data-action="open-drawer" aria-controls="CartDrawer" class="fixed z-0 bottom-4 right-4 bg-yellow-400 px-4 py-2 rounded text-black">
   Test Drawer
-</button>
+</button> {% endcomment %}
 {% if settings.cart_type == 'drawer' %}
   {% section 'cart-drawer' %}
 {% endif %}

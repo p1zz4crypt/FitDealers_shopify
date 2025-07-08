@@ -4,19 +4,49 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  position: relative;
 }
+
 
 @media screen and (min-width: 750px) {
   .newsletter-form {
     align-items: flex-start;
     margin: 0 auto;
-    max-width: 36rem;
+    max-width: 100%;
   }
 }
 
 .newsletter-form__field-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   width: 100%;
+}
+
+.newsletter-form__field-wrapper input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+}
+
+.newsletter-form__field-wrapper button {
+  padding: 0.5rem 1.5rem;
+  background-color: #facc15;
+  color: #000;
+  font-weight: bold;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-form__field-wrapper button:hover {
+  background-color: #eab308;
+}
+
+.newsletter-form__field-wrapper button:focus {
+  outline: 2px solid #facc15;
+  outline-offset: 2px;
 }
 
 .newsletter-form__field-wrapper .field__input {
