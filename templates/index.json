@@ -9,52 +9,111 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "slideshow_dKicnr": {
+      "type": "slideshow",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slide_T6iHAt": {
+          "type": "slide",
           "settings": {
-            "heading": "Cambiando texto de prueba",
-            "heading_size": "h0"
+            "image": "shopify://shop_images/fondo1.png",
+            "image_overlay_opacity": 0,
+            "show_stars": true,
+            "stars_text": "4M+ clientes satisfechos",
+            "heading": "Elige tu meta,nosotros te damos el suplemento ideal.",
+            "heading_size": "h1",
+            "subheading": "<p>Suplementos formulados por entrenadores para maximizar tu fuerza y recuperación.</p>",
+            "button_1_label": "EXPLORA SUPLUMENTOS PREMIUM",
+            "button_1_link": "shopify://collections/all",
+            "button_1_style_secondary": false,
+            "button_2_label": "DESCUBRE TU SUPLEMENTO IDEAL",
+            "button_2_link": "shopify://collections/all",
+            "button_2_style_secondary": true,
+            "show_text_box": true,
+            "box_align": "middle-left",
+            "text_box_max_width": 70,
+            "text_alignment": "left",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-4"
           }
         },
-        "button": {
-          "type": "buttons",
+        "slide_xV4hQF": {
+          "type": "slide",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "image": "shopify://shop_images/FondoDos.png",
+            "image_overlay_opacity": 0,
+            "show_stars": true,
+            "stars_text": "4M+ clientes satisfechos",
+            "heading": "Distribuidor oficial de 50+ marcas top.",
+            "heading_size": "h1",
+            "subheading": "<p>-20 000+ envíos al mes. -Devolución fácil en 30 días.</p>",
+            "button_1_label": "VER TODAS LAS MARCAS",
+            "button_1_link": "shopify://collections/all",
+            "button_1_style_secondary": false,
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style_secondary": true,
+            "show_text_box": true,
+            "box_align": "middle-left",
+            "text_box_max_width": 70,
+            "text_alignment": "left",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        },
+        "slide_9nUd7h": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/FondoTres.png",
+            "image_overlay_opacity": 0,
+            "show_stars": false,
+            "stars_text": "4M+ clientes satisfechos",
+            "heading": "Arma tu Kit Perfecto",
+            "heading_size": "h0",
+            "subheading": "<p>Elige 4 productos y obtén un 15 % de descuento instantáneo</p>",
+            "button_1_label": "Crea tu kit ahora",
+            "button_1_link": "shopify://collections/all",
+            "button_1_style_secondary": false,
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-left",
+            "text_box_max_width": 70,
+            "text_alignment": "left",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-4"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "slide_T6iHAt",
+        "slide_xV4hQF",
+        "slide_9nUd7h"
       ],
+      "name": "t:sections.slideshow.presets.name",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
         "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "show_text_below": true,
+        "accessibility_info": "Presentación de diapositivas sobre tu marca"
       }
     },
     "promociones-banner": {
       "type": "promociones-banner",
-      "settings": {}
+      "settings": {
+        "prefix_text": "🚀 Nuevos clientes:",
+        "discount_amount": "15% off",
+        "code_text": "WELCOME",
+        "link": "shopify://collections/all"
+      }
     }
   },
   "order": [
-    "image_banner",
+    "slideshow_dKicnr",
     "promociones-banner"
   ]
 }

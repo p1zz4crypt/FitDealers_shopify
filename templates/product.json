@@ -153,6 +153,28 @@
         "padding_bottom": 0
       }
     },
+    "impact_testimonials_Ktn6PB": {
+      "type": "impact-testimonials",
+      "blocks": {
+        "testimonial_prPCc4": {
+          "type": "testimonial",
+          "settings": {
+            "avatar": "shopify://shop_images/model-in-neutral-colors-by-window.jpg",
+            "quote": "El mejor servicio al cliente y productos de primera calidad. Mi tienda favorita. ",
+            "author": "Ana B."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_prPCc4"
+      ],
+      "name": "Sección con testimonios e impacto",
+      "settings": {
+        "headline": "Más de 2 millones de suplementos entregados",
+        "description": "<p>Descubre por qué la comunidad <strong>#FitDealers</strong> confía en nosotros para alcanzar sus metas.</p>",
+        "product_image": "shopify://shop_images/Image_fx_44.png"
+      }
+    },
     "collection_list_Jz43fT": {
       "type": "collection-list",
       "blocks": {
@@ -200,6 +222,7 @@
     "related-products",
     "productos_recomendados_8nFDRn",
     "image_with_text_AGKpiE",
+    "impact_testimonials_Ktn6PB",
     "collection_list_Jz43fT"
   ]
 }

@@ -1,13 +1,12 @@
 {% comment %} Snippet: purchase-plan.liquid {% endcomment %}
 {% assign tiene_suscripcion = product.metafields.custom.tiene_suscripcion.value %}
 {% assign precio_suscripcion = product.metafields.custom.precio_suscripcion %}
-{% assign frecuencias = product.metafields.custom.frecuencias_suscripcion.value %}
 
 {% if tiene_suscripcion %}
   <div class="subscription-options rounded-lg overflow-hidden mb-6">
 
     <!-- Compra Única -->
-    <label class="block p-4 cursor-pointer border-2 rounded-lg mb-4 hover:bg-gray-50 transition-all flex justify-between items-start gap-4"
+    <label class=" p-4 cursor-pointer border-2 rounded-lg mb-4 hover:bg-gray-50 transition-all flex justify-between items-start gap-4"
            for="purchase_onetime">
       <div class="flex gap-2 ">
         <input type="radio" id="purchase_onetime" name="purchase_type" value="onetime"
@@ -40,18 +39,6 @@
               <li>Cambia sabor o pausa en cualquier momento</li>
               <li>Cancela al instante</li>
             </ul>
-
-            <p class="mt-2 font-semibold">Elige la frecuencia:</p>
-            <div class="flex flex-wrap gap-2 mt-1">
-              {% for frecuencia in frecuencias %}
-                <button type="button"
-                        data-frequency-button
-                        class="bg-gray-100 border cursor-pointer border-black px-3 py-1 rounded hover:bg-black hover:text-white transition-all"
-                        onclick="setFrequency('{{ frecuencia }}')">
-                  {{ frecuencia }}
-                </button>
-              {% endfor %}
-            </div>
           </div>
         </div>
         <p class="font-semibold text-green-600 text-right whitespace-nowrap">

@@ -1,0 +1,89 @@
+{% schema %}
+{
+  "name": "Impacto con Testimonios",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Título principal",
+      "default": "Más de 2 millones de suplementos entregados"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Texto de apoyo",
+      "default": "<p>Descubre por qué la comunidad #FitDealers confía en nosotros para alcanzar sus metas.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Imagen del producto"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonio",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar del cliente"
+        },
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Testimonio"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Nombre del cliente"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sección con testimonios e impacto",
+      "category": "Testimonios"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="bg-gray-100 py-12">
+  <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center gap-10">
+    
+    <!-- Texto y cifras -->
+    <div class="md:w-1/2 space-y-4">
+      <div class=" font-lighter text-sm"><span class="text-xl text-yellow-500">★★★★★</span> 4,000+ CLIENTES SATISFECHOS</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">{{ section.settings.headline }}</h2>
+      <div class="text-gray-700 text-xl leading-relaxed">
+        {{ section.settings.description }}
+      </div>
+    </div>
+
+    <!-- Imagen con testimonios flotantes -->
+    <div class="md:w-1/2 relative w-full max-w-md mx-auto">
+      {% if section.settings.product_image %}
+        <img src="{{ section.settings.product_image | image_url: width:1200, height:1200 }}" alt="Producto destacado" class="w-full" width="1200" height="1200">
+      {% endif %}
+
+      {% assign positions = "top-6 right-4, bottom-6 left-0" | split: ", " %}
+      {% for block in section.blocks %}
+        {% assign position = positions[forloop.index0] | default: "top-0 left-0" %}
+        <div class="absolute {{ position }} bg-white p-4 rounded-lg shadow-lg flex gap-3 max-w-xs w-[270px]">
+          {% if block.settings.avatar %}
+            <img src="{{ block.settings.avatar | image_url: width:100, height:100, crop: 'center' }}" alt="{{ block.settings.author }}" class="w-10 h-10 rounded-full object-cover" width="100" height="100">
+          {% endif %}
+          <div>
+            <p class="text-sm text-gray-700 leading-tight">“{{ block.settings.quote }}”</p>
+            <p class="text-sm font-bold mt-1">- {{ block.settings.author }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

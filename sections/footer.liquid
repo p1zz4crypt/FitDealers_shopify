@@ -40,7 +40,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #ffffff;
     padding: 0.5rem 0;
     list-style: none;
@@ -149,7 +149,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 text-sm">
       <div>
         <h3 class="font-semibold mb-2 text-white">Empresa</h3>
-        <ul class="space-y-1 text-gray-300">
+        <ul class="space-y-1 text-gray-300 text-lg">
           <li><a href="/pages/historia" class="hover:text-yellow-400 transition-colors">Historia</a></li>
           <li><a href="/pages/oportunidades" class="hover:text-yellow-400 transition-colors">Oportunidades laborales</a></li>
           <li><a href="/pages/influencers" class="hover:text-yellow-400 transition-colors">Influencers</a></li>
@@ -157,16 +157,16 @@
       </div>
       <div>
         <h3 class="font-semibold mb-2 text-white">Ayuda</h3>
-        <ul class="space-y-1 text-gray-300">
+        <ul class="space-y-1 text-gray-300 text-lg">
           <li><a href="/pages/soporte" class="hover:text-yellow-400 transition-colors">Soporte</a></li>
           <li><a href="/pages/contacto" class="hover:text-yellow-400 transition-colors">Contacto</a></li>
           <li><a href="/pages/envio" class="hover:text-yellow-400 transition-colors">Envío</a></li>
-          <li><a href="/account" class="hover:text-yellow-400 transition-colors">Mi cuenta</a></li>
+          <li><a href="{{ routes.account_url }}" class="hover:text-yellow-400 transition-colors">Mi cuenta</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="font-semibold mb-2 text-white">Síguenos</h3>
-        <ul class="space-y-1 text-gray-300">
+        <h3 class="font-semibold mb-2 text-white ">Síguenos</h3>
+        <ul class="space-y-1 text-gray-300 text-lg">
           <li><a href="{{ settings.social_facebook_link | default: 'https://facebook.com' }}" class="hover:text-yellow-400 transition-colors">Facebook</a></li>
           <li><a href="{{ settings.social_instagram_link | default: 'https://instagram.com' }}" class="hover:text-yellow-400 transition-colors">Instagram</a></li>
           <li><a href="{{ settings.social_youtube_link | default: 'https://youtube.com' }}" class="hover:text-yellow-400 transition-colors">YouTube</a></li>
