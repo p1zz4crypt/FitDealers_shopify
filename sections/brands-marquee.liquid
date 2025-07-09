@@ -1,0 +1,97 @@
+<style>
+  .marquee-container {
+    overflow: hidden;
+    background: #fff;
+    padding: 1rem 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    animation: scroll-marquee 30s linear infinite;
+  }
+
+  .marquee-track img {
+    height: 48px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  .marquee-track img:hover {
+    opacity: 1;
+  }
+
+  @keyframes scroll-marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Duplicar contenido para bucle sin cortes */
+  .marquee-wrapper {
+    display: flex;
+    width: fit-content;
+  }
+</style>
+
+<section class="marquee-container">
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      {% for block in section.blocks %}
+        <img
+          src="{{ block.settings.logo | image_url: width: 200 }}"
+          alt="{{ block.settings.alt | escape }}"
+          loading="lazy"
+          width="200"
+          height="100"
+        >
+      {% endfor %}
+      {% for block in section.blocks %}
+        <img
+          src="{{ block.settings.logo | image_url: width: 200 }}"
+          alt="{{ block.settings.alt | escape }}"
+          loading="lazy"
+          width="200"
+          height="100"
+        >
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Marquesina de Marcas",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Logo de Marca",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Texto alternativo",
+          "default": "Marca"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquesina de Marcas",
+      "category": "Componentes"
+    }
+  ]
+}
+{% endschema %}

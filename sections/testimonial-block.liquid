@@ -1,0 +1,85 @@
+{% stylesheet %}
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+{% endstylesheet %}
+
+<section class="bg-black text-gray-300 font-mono py-12 px-4">
+  <div class="max-w-4xl mx-auto text-center space-y-8">
+
+    <!-- Calificación + Clientes -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-lg font-light">
+      <div class="flex flex-col items-center border-r sm:pr-6 border-gray-600">
+        <div class="text-yellow-400 text-2xl mb-1">★★★★★</div>
+        <div class="text-gray-400 text-base">
+          {{ section.settings.rating }} ({{ section.settings.reviews }})
+        </div>
+      </div>
+      <div class="text-white text-xl font-medium">
+        {{ section.settings.client_count }}
+        <div class="text-gray-400 text-sm">Clientes satisfechos</div>
+      </div>
+    </div>
+
+    <!-- Testimonio -->
+    <div class="bg-gray-100 text-black max-w-3xl mx-auto p-6 rounded-xl flex items-center gap-4">
+      {% if section.settings.testimonial_image %}
+        <img src="{{ section.settings.testimonial_image | image_url: width: 100 }}" alt="Foto de cliente" class="w-16 h-16 rounded-full object-cover" width="64" height="64">
+      {% endif %}
+      <div class="text-left text-sm">
+        <p class="italic mb-1">
+          "{{ section.settings.testimonial_text }}"
+        </p>
+        <p class="font-bold text-xs">– {{ section.settings.testimonial_author }}</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bloque de Testimonio",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Calificación",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "reviews",
+      "label": "Número de reseñas",
+      "default": "3,500+ reviews"
+    },
+    {
+      "type": "text",
+      "id": "client_count",
+      "label": "Clientes satisfechos",
+      "default": "+10,000"
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_image",
+      "label": "Foto del cliente"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_text",
+      "label": "Texto del testimonio",
+      "default": "El mejor servicio al cliente y productos de primera calidad. Mi tienda favorita."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_author",
+      "label": "Autor del testimonio",
+      "default": "Ana B."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonio destacado"
+    }
+  ]
+}
+{% endschema %}
