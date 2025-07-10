@@ -245,6 +245,7 @@ slider-component.slider-component-full-width {
   display: flex;
   justify-content: center;
   min-width: 4.4rem;
+  color: gray;
 }
 
 @media screen and (min-width: 750px) {
@@ -312,9 +313,12 @@ slider-component.slider-component-full-width {
 }
 
 .slider-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    top: 90%;
 }
 
 @media screen and (min-width: 990px) {
@@ -336,7 +340,7 @@ slider-component.slider-component-full-width {
 }
 
 .slider-button {
-  color: rgba(var(--color-foreground), 0.75);
+  color: gray;
   background: transparent;
   border: none;
   cursor: pointer;

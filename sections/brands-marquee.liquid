@@ -2,7 +2,7 @@
   .marquee-container {
     overflow: hidden;
     background: #fff;
-    padding: 1rem 0;
+    padding: 4rem 0;
   }
 
   .marquee-track {
@@ -12,11 +12,12 @@
   }
 
   .marquee-track img {
-    height: 48px;
+    height: 58px;
     object-fit: contain;
     filter: grayscale(100%);
     opacity: 0.8;
     transition: opacity 0.3s ease;
+    margin: 0 20px;
   }
 
   .marquee-track img:hover {
@@ -42,6 +43,24 @@
 <section class="marquee-container">
   <div class="marquee-wrapper">
     <div class="marquee-track">
+      {% for block in section.blocks %}
+        <img
+          src="{{ block.settings.logo | image_url: width: 200 }}"
+          alt="{{ block.settings.alt | escape }}"
+          loading="lazy"
+          width="200"
+          height="100"
+        >
+      {% endfor %}
+      {% for block in section.blocks %}
+        <img
+          src="{{ block.settings.logo | image_url: width: 200 }}"
+          alt="{{ block.settings.alt | escape }}"
+          loading="lazy"
+          width="200"
+          height="100"
+        >
+      {% endfor %}
       {% for block in section.blocks %}
         <img
           src="{{ block.settings.logo | image_url: width: 200 }}"
