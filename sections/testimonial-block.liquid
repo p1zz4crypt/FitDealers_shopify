@@ -41,9 +41,9 @@
             x-transition:leave-end="opacity-0 -translate-x-6"
             class="absolute inset-0 bg-gray-100 text-black p-6 rounded-xl flex items-center gap-4"
           >
-            <img :src="testimonial.image" class="w-16 h-16 mr-3 rounded-full object-cover" alt="" width="64" height="64">
+            <img :src="testimonial.image" class="w-24 h-24 mr-3 rounded-md object-cover" alt="" width="72" height="72">
             <div class="text-left">
-              <p class="italic mb-1" x-text="testimonial.text"></p>
+              <p class="italic leading-8 mb-1" x-text="testimonial.text"></p>
               <p class="font-bold" x-text="`– ${testimonial.author}`"></p>
             </div>
           </div>

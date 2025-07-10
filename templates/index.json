@@ -159,13 +159,55 @@
       "name": "Marquesina de Marcas",
       "settings": {}
     },
+    "testimonial_block_NWACfK": {
+      "type": "testimonial-block",
+      "blocks": {
+        "testimonial_epQL4r": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/model-in-neutral-colors-by-window.jpg",
+            "text": "El mejor servicio al cliente y productos de primera calidad. Mi tienda favorita.",
+            "author": "Ana B."
+          }
+        },
+        "testimonial_riPnpm": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/fashion-portrait.jpg",
+            "text": "Mi tienda favorita.",
+            "author": "Ana B."
+          }
+        },
+        "testimonial_MM3x4j": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/man-in-white-and-light-tan-outfit.jpg",
+            "text": "Productos de primera calidad. Mi tienda favorita.",
+            "author": "Ana B."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_epQL4r",
+        "testimonial_riPnpm",
+        "testimonial_MM3x4j"
+      ],
+      "name": "Carrusel de Testimonios",
+      "settings": {
+        "rating": "4.9",
+        "reviews": "3,500+ reviews",
+        "client_count": "+10,000",
+        "cta_text": "Explora nuestros más vendidos",
+        "cta_link": "shopify://collections/all"
+      }
+    },
     "featured_collection_fJ7MjC": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "",
         "products_to_show": 4,
-        "title": "Colección destacada",
+        "title": "Más vendidos",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
@@ -187,11 +229,143 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "explora_categorias_caa8xg": {
+      "type": "explora-categorias",
+      "blocks": {
+        "categoria_RwNTT3": {
+          "type": "categoria",
+          "settings": {
+            "coleccion": "pre-entreno"
+          }
+        },
+        "categoria_eHrkFa": {
+          "type": "categoria",
+          "settings": {
+            "coleccion": "quemadores"
+          }
+        },
+        "categoria_DLKMnG": {
+          "type": "categoria",
+          "settings": {
+            "coleccion": "aminoacidos"
+          }
+        },
+        "categoria_RifB3c": {
+          "type": "categoria",
+          "settings": {
+            "coleccion": "multivitaminicos"
+          }
+        },
+        "categoria_rqVPFQ": {
+          "type": "categoria",
+          "settings": {
+            "coleccion": "proteinas"
+          }
+        },
+        "categoria_aKYPkw": {
+          "type": "categoria",
+          "settings": {
+            "coleccion": "snacks"
+          }
+        }
+      },
+      "block_order": [
+        "categoria_RwNTT3",
+        "categoria_eHrkFa",
+        "categoria_DLKMnG",
+        "categoria_RifB3c",
+        "categoria_rqVPFQ",
+        "categoria_aKYPkw"
+      ],
+      "name": "Explora por Categoría",
+      "settings": {}
+    },
+    "explora_objetivo_VVhBiX": {
+      "type": "explora-objetivo",
+      "blocks": {
+        "objetivo_zcf6AQ": {
+          "type": "objetivo",
+          "settings": {
+            "title": "Ganar Masa Muscular",
+            "image": "shopify://shop_images/image.png",
+            "link": "",
+            "image_position": "top"
+          }
+        },
+        "objetivo_iVn64D": {
+          "type": "objetivo",
+          "settings": {
+            "title": "Quemar grasa y definirte",
+            "image": "shopify://shop_images/Frame_14.png",
+            "link": "",
+            "image_position": "center"
+          }
+        },
+        "objetivo_RHXQ9n": {
+          "type": "objetivo",
+          "settings": {
+            "title": "Energía y rendimiento",
+            "image": "shopify://shop_images/Frame_15.png",
+            "link": "",
+            "image_position": "center"
+          }
+        },
+        "objetivo_FXtyi9": {
+          "type": "objetivo",
+          "settings": {
+            "title": "Recuperación y descanso",
+            "image": "shopify://shop_images/Frame_16.png",
+            "link": "",
+            "image_position": "center"
+          }
+        },
+        "objetivo_rnxRzb": {
+          "type": "objetivo",
+          "settings": {
+            "title": "Salud y vitalidad",
+            "image": "shopify://shop_images/Frame_17.png",
+            "link": "",
+            "image_position": "center"
+          }
+        },
+        "objetivo_W8rYVQ": {
+          "type": "objetivo",
+          "settings": {
+            "title": "Snacks altos en proteína",
+            "image": "shopify://shop_images/Frame_18.png",
+            "link": "",
+            "image_position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "objetivo_zcf6AQ",
+        "objetivo_iVn64D",
+        "objetivo_RHXQ9n",
+        "objetivo_FXtyi9",
+        "objetivo_rnxRzb",
+        "objetivo_W8rYVQ"
+      ],
+      "name": "Explora por Objetivo",
+      "settings": {}
+    },
+    "banner_imagen_personalizado_Xe4t6e": {
+      "type": "banner-imagen-personalizado",
+      "name": "Banner horizontal",
+      "settings": {
+        "banner_image": "shopify://shop_images/Frame_55.png",
+        "alt_text": ""
+      }
     }
   },
   "order": [
     "slideshow_dKicnr",
     "brands_marquee_FHcM9p",
-    "featured_collection_fJ7MjC"
+    "testimonial_block_NWACfK",
+    "featured_collection_fJ7MjC",
+    "explora_categorias_caa8xg",
+    "explora_objetivo_VVhBiX",
+    "banner_imagen_personalizado_Xe4t6e"
   ]
 }

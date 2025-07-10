@@ -1,0 +1,106 @@
+<section class="py-12 px-4">
+  <div class="page-width mx-auto px-4 text-left">
+    <h2 class="text-2xl font-bold mb-2">Explora por objetivo</h2>
+    <p class="text-gray-600 mb-10">
+      ¿Buscas ganar músculo, quemar grasa, elevar tu energía o cuidar tu salud día tras día? En The Fit Dealers
+      encontrarás suplementos de alta calidad que realmente marcan la diferencia.
+    </p>
+
+    {% if section.blocks.size > 0 %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {% for block in section.blocks limit: 6 %}
+          <a
+            href="{{ block.settings.link | default: '#' }}"
+            class="relative rounded-lg overflow-hidden group shadow-md aspect-[3/2] block"
+          >
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                alt="{{ block.settings.title | escape }}"
+                width="{{ block.settings.image.width | default: 600 }}"
+                height="{{ block.settings.image.height | default: 400 }}"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105
+                  {% case block.settings.image_position %}
+                    {% when 'top' %} object-top
+                    {% when 'center' %} object-center
+                    {% when 'bottom' %} object-bottom
+                    {% else %} object-center
+                  {% endcase %}"
+              >
+            {% else %}
+              <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                <span class="text-gray-500 text-sm">Imagen no configurada</span>
+              </div>
+            {% endif %}
+
+            {% if block.settings.title != blank %}
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/10 flex items-center justify-center">
+                <h1 class="text-white text-xl font-extrabold text-center leading-tight px-4" style="color: #fff">
+                  {{ block.settings.title }}
+                </h1>
+              </div>
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-gray-400 italic mt-10">Agrega bloques para mostrar objetivos.</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Explora por Objetivo",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "objetivo",
+      "name": "Tarjeta de Objetivo",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen de fondo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace destino"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Posición de la imagen",
+          "default": "center",
+          "options": [
+            {
+              "value": "top",
+              "label": "Arriba"
+            },
+            {
+              "value": "center",
+              "label": "Centro"
+            },
+            {
+              "value": "bottom",
+              "label": "Abajo"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Explora por Objetivo",
+      "category": "Secciones personalizadas"
+    }
+  ]
+}
+{% endschema %}

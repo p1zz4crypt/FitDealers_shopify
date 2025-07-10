@@ -1,0 +1,51 @@
+<section class="py-10 px-4 bg-white text-black text-center">
+  <h2 class="text-2xl font-bold mb-8">Explora por categoría</h2>
+  <div class="grid justify-center place-items-center grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mx-auto">
+    {% for block in section.blocks %}
+      {% assign categoria = collections[block.settings.coleccion] %}
+      {% if categoria %}
+        <a href="{{ categoria.url }}" class="flex flex-col items-center space-y-2 group">
+          {% if categoria.image %}
+            <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden">
+              <img
+                src="{{ categoria.image | image_url: width: 400 }}"
+                alt="{{ categoria.title }}"
+                width="400"
+                height="400"
+                class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+              >
+            </div>
+          {% endif %}
+          <div class="text-xl font-semibold">{{ categoria.title }}</div>
+          <div class="text-lg text-gray-500">{{ categoria.products_count }}+ Productos</div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Explora por Categoría",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "categoria",
+      "name": "Categoría",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "coleccion",
+          "label": "Selecciona una colección"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Explora por Categoría"
+    }
+  ]
+}
+{% endschema %}

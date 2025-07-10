@@ -1,0 +1,69 @@
+<!-- sections/banner-image.liquid -->
+<section class="w-full">
+  <div class="relative w-full">
+    {% if section.settings.banner_image %}
+      <img 
+        src="{{ section.settings.banner_image | img_url: '2048x' }}"
+        alt="{{ section.settings.banner_image.alt | default: section.settings.alt_text }}"
+        class="w-full h-auto object-cover object-center max-w-full"
+        loading="lazy"
+        width="{{ section.settings.banner_image.width }}"
+        height="{{ section.settings.banner_image.height }}"
+      >
+    {% else %}
+      <!-- Placeholder cuando no hay imagen -->
+      <div class="w-full h-64 bg-gray-200 flex items-center justify-center">
+        <p class="text-gray-500 text-lg">Selecciona una imagen para el banner</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner Personalizado",
+  "tag": "section",
+  "class": "section-banner-image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Imagen del banner",
+      "info": "Recomendado: 2048x600px para mejor calidad"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Texto alternativo",
+      "info": "Describe la imagen para accesibilidad"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Image"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .section-banner-image {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .section-banner-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Asegurar que la imagen se vea bien en dispositivos muy pequeños */
+  @media (max-width: 480px) {
+    .section-banner-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+</style>
