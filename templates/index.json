@@ -361,10 +361,21 @@
     "client_testimonials_dGaN8p": {
       "type": "client-testimonials",
       "blocks": {
+        "testimonial_xiAphh": {
+          "type": "testimonial",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=J3rw6TmYcH4",
+            "name": "Carlos Rodríguez",
+            "flag": "🇲🇽",
+            "testimonial": "Recibí mi pedido en menos de 24 h...",
+            "product_tag": "PRE WORK"
+          }
+        },
         "testimonial_3JhtzR": {
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/community-3.png",
+            "video": "",
             "name": "Carlos R.",
             "flag": "🇲🇽",
             "testimonial": "Recibí mi pedido en menos de 24 horas, el servicio excelente, los precios muy bajos. Recibí mi pedido en menos de 24 horas, el servicio excelente, los precios muy bajos",
@@ -375,6 +386,7 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/community-9.png",
+            "video": "",
             "name": "Carlos R.",
             "flag": "🇲🇽",
             "testimonial": "Recibí mi pedido en menos de 24 horas, el servicio excelente, los precios muy bajos.",
@@ -385,6 +397,7 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/community-8.png",
+            "video": "",
             "name": "Carlos R.",
             "flag": "🇲🇽",
             "testimonial": "Recibí mi pedido en menos de 24 horas, el servicio excelente, los precios muy bajos.",
@@ -395,16 +408,7 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/community-5.png",
-            "name": "Carlos R.",
-            "flag": "🇲🇽",
-            "testimonial": "Recibí mi pedido en menos de 24 h...",
-            "product_tag": "PRE WORK"
-          }
-        },
-        "testimonial_gdwEV4": {
-          "type": "testimonial",
-          "settings": {
-            "image": "shopify://shop_images/community-4.png",
+            "video": "",
             "name": "Carlos R.",
             "flag": "🇲🇽",
             "testimonial": "Recibí mi pedido en menos de 24 h...",
@@ -413,11 +417,11 @@
         }
       },
       "block_order": [
+        "testimonial_xiAphh",
         "testimonial_3JhtzR",
         "testimonial_hKVgNh",
         "testimonial_rXfcJw",
-        "testimonial_XWMKPj",
-        "testimonial_gdwEV4"
+        "testimonial_XWMKPj"
       ],
       "name": "Testimonios visuales",
       "settings": {

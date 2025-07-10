@@ -9,30 +9,46 @@
     <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
       {% for block in section.blocks %}
         <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col w-[200px]">
-          {% if block.settings.image %}
-            <div class="aspect-[9/16] overflow-hidden rounded-t-xl shrink-0">
-  <img
-    src="{{ block.settings.image | image_url: width: 400 }}"
-    alt="Cliente FitDealers"
-    class="w-full h-full object-cover"
-    width="400"
-    height="711"
-  >
-</div>
-          {% endif %}
+          <div class="aspect-[9/16] overflow-hidden rounded-t-xl shrink-0">
+            {% if block.settings.video contains "youtube.com/watch?v=" %}
+              {% assign youtube_id = block.settings.video | split: 'v=' | last | split: '&' | first %}
+              <iframe
+                class="w-full h-full"
+                src="https://www.youtube.com/embed/{{ youtube_id }}?rel=0&playsinline=1"
+                frameborder="0"
+                allowfullscreen
+                allow="autoplay; encrypted-media"
+              ></iframe>
+            {% elsif block.settings.video contains "vimeo.com" %}
+              {% assign vimeo_id = block.settings.video | split: '/' | last %}
+              <iframe
+                class="w-full h-full"
+                src="https://player.vimeo.com/video/{{ vimeo_id }}"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            {% elsif block.settings.image %}
+              <img
+                src="{{ block.settings.image | image_url: width: 400 }}"
+                alt="Cliente FitDealers"
+                class="w-full h-full object-cover"
+                width="400"
+                height="711"
+              >
+            {% endif %}
+          </div>
+
           <div class="p-4 text-left flex flex-col justify-between flex-grow">
             <div>
-              <div class="font-bold">
+              <div class="font-bold ">
                 {{ block.settings.name -}}
-                {%- if block.settings.flag %}
-                  <span>{{ block.settings.flag }}</span>
-                {%- endif %}
+                {%- if block.settings.flag %} <span class="text-sm text-gray-400">{{ block.settings.flag }}</span> {%- endif %}
               </div>
-              <p class="text-lg text-gray-700 italic mt-2 whitespace-normal">{{ block.settings.testimonial }}</p>
+              <p class="text-sm text-gray-700 italic mt-2 whitespace-normal">{{ block.settings.testimonial }}</p>
             </div>
             {% if block.settings.product_tag %}
               <div class="mt-4">
-                <span class="text-lg font-semibold px-2 py-1 rounded-full bg-green-100 text-green-800">
+                <span class="text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-800">
                   {{ block.settings.product_tag }}
                 </span>
               </div>
@@ -43,6 +59,7 @@
     </div>
   </div>
 </section>
+
 
 {% schema %}
 {
@@ -81,6 +98,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "Imagen del cliente"
+        },
+        {
+          "type": "url",
+          "id": "video",
+          "label": "Video (opcional, reemplaza imagen)",
+          "info": "Pega el enlace de YouTube (formato: watch?v=...) o Vimeo"
         },
         {
           "type": "text",
