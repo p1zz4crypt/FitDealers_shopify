@@ -1,43 +1,84 @@
-{% stylesheet %}
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
-{% endstylesheet %}
-
-<section class="bg-black text-gray-300 font-mono py-12 px-4">
-  <div class="max-w-4xl mx-auto text-center space-y-8">
+<section class="bg-yellow-500 text-gray-300 font-sans py-12 px-4">
+  <div class="max-w-5xl mx-auto text-center space-y-10">
 
     <!-- Calificación + Clientes -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-lg font-light">
       <div class="flex flex-col items-center border-r sm:pr-6 border-gray-600">
-        <div class="text-yellow-400 text-2xl mb-1">★★★★★</div>
-        <div class="text-gray-400 text-base">
+        <div class="text-black text-4xl mb-1">★★★★★</div>
+        <div class="text-black text-xl">
           {{ section.settings.rating }} ({{ section.settings.reviews }})
         </div>
       </div>
-      <div class="text-white text-xl font-medium">
+      <div class="text-black text-4xl font-medium">
         {{ section.settings.client_count }}
-        <div class="text-gray-400 text-sm">Clientes satisfechos</div>
+        <div class="text-black text-xl">Clientes satisfechos</div>
       </div>
     </div>
 
-    <!-- Testimonio -->
-    <div class="bg-gray-100 text-black max-w-3xl mx-auto p-6 rounded-xl flex items-center gap-4">
-      {% if section.settings.testimonial_image %}
-        <img src="{{ section.settings.testimonial_image | image_url: width: 100 }}" alt="Foto de cliente" class="w-16 h-16 rounded-full object-cover" width="64" height="64">
-      {% endif %}
-      <div class="text-left text-sm">
-        <p class="italic mb-1">
-          "{{ section.settings.testimonial_text }}"
-        </p>
-        <p class="font-bold text-xs">– {{ section.settings.testimonial_author }}</p>
+    <!-- Carrusel manual con animación suave y flechas -->
+    <div x-data="{
+      testimonials: [
+        {% for block in section.blocks %}
+          {
+            text: '{{ block.settings.text | escape }}',
+            author: '{{ block.settings.author | escape }}',
+            image: '{{ block.settings.image | image_url: width: 100 }}'
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ],
+      activeIndex: 0
+    }" class="relative max-w-3xl mx-auto">
+
+      <div class="relative h-auto min-h-[160px] mx-6 px-6">
+        <template x-for="(testimonial, index) in testimonials" :key="index">
+          <div
+            x-show="activeIndex === index"
+            x-transition:enter="transition ease-out duration-500"
+            x-transition:enter-start="opacity-0 translate-x-6"
+            x-transition:enter-end="opacity-100 translate-x-0"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 translate-x-0"
+            x-transition:leave-end="opacity-0 -translate-x-6"
+            class="absolute inset-0 bg-gray-100 text-black p-6 rounded-xl flex items-center gap-4"
+          >
+            <img :src="testimonial.image" class="w-16 h-16 mr-3 rounded-full object-cover" alt="" width="64" height="64">
+            <div class="text-left">
+              <p class="italic mb-1" x-text="testimonial.text"></p>
+              <p class="font-bold" x-text="`– ${testimonial.author}`"></p>
+            </div>
+          </div>
+        </template>
       </div>
+
+      <!-- Flechas laterales visibles y elegantes -->
+      <div class="absolute top-1/2 left-[-2rem] transform -translate-y-1/2 z-10 ">
+        <button @click="activeIndex = (activeIndex - 1 + testimonials.length) % testimonials.length" class="mr-3  text-black p-2 rounded-full shadow hover:bg-black hover:text-gray-300 transition focus:outline-none">
+          ⪡
+        </button>
+      </div>
+      <div class="absolute top-1/2 right-[-2rem] transform -translate-y-1/2 z-10 ">
+        <button @click="activeIndex = (activeIndex + 1) % testimonials.length" class="ml-3  text-black p-2 rounded-full shadow hover:bg-black hover:text-gray-300 transition focus:outline-none">
+          ⪢
+        </button>
+      </div>
+
     </div>
+
+    <!-- CTA -->
+    {% comment %} {% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
+      <div>
+        <a href="{{ section.settings.cta_link }}" class="inline-block mt-6 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 transition">
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+    {% endif %} {% endcomment %}
 
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Bloque de Testimonio",
+  "name": "Carrusel de Testimonios",
   "tag": "section",
   "settings": [
     {
@@ -59,26 +100,51 @@
       "default": "+10,000"
     },
     {
-      "type": "image_picker",
-      "id": "testimonial_image",
-      "label": "Foto del cliente"
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto del botón CTA",
+      "default": "Explora nuestros más vendidos"
     },
     {
-      "type": "text",
-      "id": "testimonial_text",
-      "label": "Texto del testimonio",
-      "default": "El mejor servicio al cliente y productos de primera calidad. Mi tienda favorita."
-    },
+      "type": "url",
+      "id": "cta_link",
+      "label": "Enlace del CTA",
+      "default": "/collections/all"
+    }
+  ],
+  "blocks": [
     {
-      "type": "text",
-      "id": "testimonial_author",
-      "label": "Autor del testimonio",
-      "default": "Ana B."
+      "type": "testimonial",
+      "name": "Testimonio",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Foto del cliente"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto del testimonio",
+          "default": "El mejor servicio al cliente y productos de primera calidad. Mi tienda favorita."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Autor",
+          "default": "Ana B."
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Testimonio destacado"
+      "name": "Carrusel de Testimonios",
+      "blocks": [
+        {"type": "testimonial"},
+        {"type": "testimonial"},
+        {"type": "testimonial"}
+      ]
     }
   ]
 }
