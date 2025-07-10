@@ -357,6 +357,75 @@
         "banner_image": "shopify://shop_images/Frame_55.png",
         "alt_text": ""
       }
+    },
+    "client_testimonials_dGaN8p": {
+      "type": "client-testimonials",
+      "blocks": {
+        "testimonial_3JhtzR": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/community-3.png",
+            "name": "Carlos R.",
+            "flag": "🇲🇽",
+            "testimonial": "Recibí mi pedido en menos de 24 horas, el servicio excelente, los precios muy bajos. Recibí mi pedido en menos de 24 horas, el servicio excelente, los precios muy bajos",
+            "product_tag": "PRE WORK"
+          }
+        },
+        "testimonial_hKVgNh": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/community-9.png",
+            "name": "Carlos R.",
+            "flag": "🇲🇽",
+            "testimonial": "Recibí mi pedido en menos de 24 horas, el servicio excelente, los precios muy bajos.",
+            "product_tag": "PRE WORK"
+          }
+        },
+        "testimonial_rXfcJw": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/community-8.png",
+            "name": "Carlos R.",
+            "flag": "🇲🇽",
+            "testimonial": "Recibí mi pedido en menos de 24 horas, el servicio excelente, los precios muy bajos.",
+            "product_tag": "PRE WORK"
+          }
+        },
+        "testimonial_XWMKPj": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/community-5.png",
+            "name": "Carlos R.",
+            "flag": "🇲🇽",
+            "testimonial": "Recibí mi pedido en menos de 24 h...",
+            "product_tag": "PRE WORK"
+          }
+        },
+        "testimonial_gdwEV4": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/community-4.png",
+            "name": "Carlos R.",
+            "flag": "🇲🇽",
+            "testimonial": "Recibí mi pedido en menos de 24 h...",
+            "product_tag": "PRE WORK"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_3JhtzR",
+        "testimonial_hKVgNh",
+        "testimonial_rXfcJw",
+        "testimonial_XWMKPj",
+        "testimonial_gdwEV4"
+      ],
+      "name": "Testimonios visuales",
+      "settings": {
+        "title": "Resultados Reales, Clientes Reales",
+        "subtitle": "<p>Envíanos tu foto o video con el hashtag <strong>#FitDealersEnAcción</strong> y únete a quienes ya entrenan sin límites.</p>",
+        "cta_text": "Ver Todos",
+        "cta_url": ""
+      }
     }
   },
   "order": [
@@ -366,6 +435,7 @@
     "featured_collection_fJ7MjC",
     "explora_categorias_caa8xg",
     "explora_objetivo_VVhBiX",
-    "banner_imagen_personalizado_Xe4t6e"
+    "banner_imagen_personalizado_Xe4t6e",
+    "client_testimonials_dGaN8p"
   ]
 }
