@@ -174,5 +174,4 @@ jobs:
           --theme ${{ env.THEME_PROD_ID }} \
           --store $SHOPIFY_FLAG_STORE \
           --password $SHOPIFY_CLI_TOKEN \
-          --no-color \
-          --json
+          --no-color
