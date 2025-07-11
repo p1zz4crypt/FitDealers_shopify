@@ -158,15 +158,17 @@ jobs:
           exit 1
         fi
         
+        # Paso 1: Subir archivos al tema sin publicar
         echo "📤 Subiendo archivos al tema de producción..."
         shopify theme push \
           --theme ${{ env.THEME_PROD_ID }} \
           --store $SHOPIFY_FLAG_STORE \
           --password $SHOPIFY_CLI_TOKEN \
+          --allow-live \
           --no-color \
           --json
         
-        # Paso 2: Publicar el tema
+        # Paso 2: Publicar el tema (opcional si ya es live)
         echo "🌟 Publicando tema..."
         shopify theme publish \
           --theme ${{ env.THEME_PROD_ID }} \
