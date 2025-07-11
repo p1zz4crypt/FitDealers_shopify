@@ -16,12 +16,12 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/fondo1.png",
-            "image_overlay_opacity": 40,
+            "image_overlay_opacity": 0,
             "show_stars": true,
             "stars_text": "4M+ clientes satisfechos",
-            "heading": "Suplementos confiables para tu cuerpo, rendimiento y bienestar",
+            "heading": "Elige tu meta,nosotros te damos el suplemento ideal.",
             "heading_size": "h1",
-            "subheading": "<ul><li>- Cambia tu físico: baja grasa o gana músculo con guías por objetivo.</li><li>- Impulsa tu rendimiento: marcas probadas por atletas, sin placebos.</li><li>- Potencia tu bienestar: fórmulas limpias para energía y salud diaria.</li></ul>",
+            "subheading": "<p>Suplementos formulados por entrenadores para maximizar tu fuerza y recuperación.</p>",
             "button_1_label": "EXPLORA SUPLUMENTOS PREMIUM",
             "button_1_link": "shopify://collections/all",
             "button_1_style_secondary": false,
@@ -30,7 +30,7 @@
             "button_2_style_secondary": true,
             "show_text_box": true,
             "box_align": "middle-left",
-            "text_box_max_width": 30,
+            "text_box_max_width": 70,
             "text_alignment": "left",
             "text_alignment_mobile": "center",
             "color_scheme": "scheme-4"
@@ -108,42 +108,42 @@
         "brand_kEHV6y": {
           "type": "brand",
           "settings": {
-            "logo": "shopify://shop_images/Rectangle_6.png",
+            "logo": "shopify://shop_images/Rectangle_10.png",
             "alt": "Marca"
           }
         },
         "brand_9nMgFc": {
           "type": "brand",
           "settings": {
-            "logo": "shopify://shop_images/Rectangle_7.png",
+            "logo": "shopify://shop_images/Rectangle_6.png",
             "alt": "Marca"
           }
         },
         "brand_XNkcmW": {
           "type": "brand",
           "settings": {
-            "logo": "shopify://shop_images/Rectangle_9.png",
+            "logo": "shopify://shop_images/Rectangle_7.png",
             "alt": "Marca"
           }
         },
         "brand_Q3iFJa": {
           "type": "brand",
           "settings": {
-            "logo": "shopify://shop_images/Rectangle_10.png",
+            "logo": "shopify://shop_images/Rectangle_9.png",
             "alt": "Marca"
           }
         },
         "brand_iAhYrY": {
           "type": "brand",
           "settings": {
-            "logo": "shopify://shop_images/Rectangle_8.png",
+            "logo": "shopify://shop_images/Vector1.png",
             "alt": "Marca"
           }
         },
         "brand_TrCXnx": {
           "type": "brand",
           "settings": {
-            "logo": "shopify://shop_images/Vector1.png",
+            "logo": "shopify://shop_images/Rectangle_8.png",
             "alt": "Marca"
           }
         }
@@ -166,23 +166,23 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/model-in-neutral-colors-by-window.jpg",
-            "text": "El mejor servicio al cliente y productos de primera calidad. Mi tienda favorita.",
-            "author": "Ana B."
+            "text": "\"Desde que descubrí Fit Dealers, mis entrenamientos subieron de nivel. La textura, el sabor y la eficacia de sus suplementos son insuperables.”",
+            "author": "María G."
           }
         },
         "testimonial_riPnpm": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/fashion-portrait.jpg",
-            "text": "Mi tienda favorita.",
-            "author": "Ana B."
+            "image": "shopify://shop_images/bearded-young-man.jpg",
+            "text": "“Llevo 6 meses usando sus productos y he notado un aumento real de energía y recuperación más rápida. ¡Recomendado al 100%!”",
+            "author": "Julián R."
           }
         },
         "testimonial_MM3x4j": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/man-in-white-and-light-tan-outfit.jpg",
-            "text": "Productos de primera calidad. Mi tienda favorita.",
+            "image": "shopify://shop_images/woman-strong-band-exercise.jpg",
+            "text": "“Excelente atención al cliente y envío súper rápido. Además, su gama de sabores me tiene enganchada.”",
             "author": "Ana B."
           }
         }

@@ -9,7 +9,9 @@
  */
 {
   "current": {
-    "logo_width": 90,
+    "logo": "shopify://shop_images/Capa_1_6ab57ef6-52c8-4f24-a91f-cb30587b27f0.png",
+    "logo_width": 50,
+    "favicon": "shopify://shop_images/Capa_1_6ab57ef6-52c8-4f24-a91f-cb30587b27f0.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
@@ -144,7 +146,7 @@
         "settings": {
           "prefix_text": "🚀 Nuevos clientes:",
           "discount_amount": "15% off",
-          "code_text": "WELCOME TEST CI CD PRODUCCION",
+          "code_text": "WELCOME TEST CI CD",
           "link": "shopify://collections/all"
         }
       }

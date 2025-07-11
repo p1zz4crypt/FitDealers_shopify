@@ -9,6 +9,11 @@
  */
 {
   "sections": {
+    "product_media_KEHNjq": {
+      "type": "product-media",
+      "name": "Galería de medios de producto",
+      "settings": {}
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -139,7 +144,7 @@
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "shopify://shop_images/Image_fx_47_1.png",
-        "height": "adapt",
+        "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
         "image_behavior": "ambient",
@@ -172,7 +177,7 @@
       "settings": {
         "headline": "Más de 2 millones de suplementos entregados",
         "description": "<p>Descubre por qué la comunidad <strong>#FitDealers</strong> confía en nosotros para alcanzar sus metas.</p>",
-        "product_image": "shopify://shop_images/Image_fx_44.png"
+        "product_image": "shopify://shop_images/db167a_0059a47a537b4ad0bca8a9f0f57c9999_mv2.webp"
       }
     },
     "collection_list_Jz43fT": {
@@ -218,6 +223,7 @@
     }
   },
   "order": [
+    "product_media_KEHNjq",
     "main",
     "related-products",
     "productos_recomendados_8nFDRn",

@@ -1,2 +1,12 @@
 [environments.development]
-store = "https://radianz-store.myshopify.com/"
+[development]
+store    = "7k0324-0h.myshopify.com"
+theme_id = "142728233158"
+
+[staging]
+store    = "7k0324-0h.myshopify.com"
+theme_id = "142728298694"
+
+[production]
+store    = "7k0324-0h.myshopify.com"
+theme_id = "142728265926"

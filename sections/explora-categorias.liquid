@@ -1,8 +1,7 @@
-<section class="py-10 px-4 bg-white text-black text-center mt-8">
-  <h1 class="text-2xl font-bold mb-12">Explora por categoría</h1>
-  <div class="grid justify-center place-items-center grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-6 gap-x-12 mx-auto">
+<section class="py-10 px-4 bg-white text-black text-center">
+  <h2 class="text-2xl font-bold mb-8">Explora por categoría</h2>
+  <div class="grid justify-center place-items-center grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mx-auto">
     {% for block in section.blocks %}
-      <div class="px-6">
       {% assign categoria = collections[block.settings.coleccion] %}
       {% if categoria %}
         <a href="{{ categoria.url }}" class="flex flex-col items-center space-y-2 group">
@@ -17,11 +16,10 @@
               >
             </div>
           {% endif %}
-          <div class="text-3xl font-semibold">{{ categoria.title }}</div>
-          <div class="text-2xl text-gray-500">{{ categoria.products_count }}+ Productos</div>
+          <div class="text-xl font-semibold">{{ categoria.title }}</div>
+          <div class="text-lg text-gray-500">{{ categoria.products_count }}+ Productos</div>
         </a>
       {% endif %}
-      </div>
     {% endfor %}
   </div>
 </section>
