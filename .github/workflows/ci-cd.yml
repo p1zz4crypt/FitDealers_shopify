@@ -148,6 +148,7 @@ jobs:
         SHOPIFY_FLAG_STORE: ${{ env.SHOPIFY_STORE_URL }}
         SHOPIFY_CLI_TTY: 0
         CI: true
+        NODE_NO_WARNINGS: 1
       run: |
         echo "🚀 Deploying to Production..."
         
@@ -157,12 +158,14 @@ jobs:
           exit 1
         fi
         
-        # Realizar el despliegue usando --password
-        shopify theme push \
+        # Configurar autenticación
+        mkdir -p ~/.config/shopify
+        echo $SHOPIFY_CLI_TOKEN > ~/.config/shopify/token
+        
+        # Realizar el despliegue
+        echo "y" | shopify theme push \
           --theme ${{ env.THEME_PROD_ID }} \
           --store $SHOPIFY_FLAG_STORE \
-          --password $SHOPIFY_CLI_TOKEN \
           --publish \
           --no-color \
-          --force \
           --json
