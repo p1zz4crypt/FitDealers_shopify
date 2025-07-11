@@ -158,32 +158,11 @@ jobs:
           exit 1
         fi
         
-        # Configurar autenticación
-        mkdir -p ~/.config/shopify
-        echo "$SHOPIFY_CLI_TOKEN" > ~/.config/shopify/token
-        
-        # Realizar el despliegue y capturar la salida
-        OUTPUT=$(echo "y" | shopify theme push \
+        # Realizar el despliegue usando --password (igual que dev/stage)
+        shopify theme push \
           --theme ${{ env.THEME_PROD_ID }} \
           --store $SHOPIFY_FLAG_STORE \
+          --password $SHOPIFY_CLI_TOKEN \
           --publish \
           --no-color \
-          --json 2>&1) || EXIT_CODE=$?
-        
-        # Mostrar la salida
-        echo "$OUTPUT"
-        
-        # Verificar si la salida contiene un mensaje de éxito
-        if echo "$OUTPUT" | grep -q '"status":"success"'; then
-          echo "✅ Despliegue exitoso"
-          exit 0
-        else
-          # Si no hay mensaje de éxito pero el código de salida es 0, asumimos éxito
-          if [ -z "${EXIT_CODE}" ] || [ "${EXIT_CODE}" -eq 0 ]; then
-            echo "✅ Despliegue completado (código de salida: ${EXIT_CODE:-0})"
-            exit 0
-          else
-            echo "❌ Error en el despliegue (código: ${EXIT_CODE})"
-            exit 1
-          fi
-        fi
+          --json
