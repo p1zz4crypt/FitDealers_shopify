@@ -144,7 +144,7 @@
         "settings": {
           "prefix_text": "🚀 Nuevos clientes:",
           "discount_amount": "15% off",
-          "code_text": "WELCOME",
+          "code_text": "WELCOME TEST CI CD PRODUCCION",
           "link": "shopify://collections/all"
         }
       }
