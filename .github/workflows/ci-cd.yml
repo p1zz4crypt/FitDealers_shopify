@@ -158,11 +158,19 @@ jobs:
           exit 1
         fi
         
-        # Realizar el despliegue usando --password (igual que dev/stage)
+        echo "📤 Subiendo archivos al tema de producción..."
         shopify theme push \
           --theme ${{ env.THEME_PROD_ID }} \
           --store $SHOPIFY_FLAG_STORE \
           --password $SHOPIFY_CLI_TOKEN \
-          --publish \
+          --no-color \
+          --json
+        
+        # Paso 2: Publicar el tema
+        echo "🌟 Publicando tema..."
+        shopify theme publish \
+          --theme ${{ env.THEME_PROD_ID }} \
+          --store $SHOPIFY_FLAG_STORE \
+          --password $SHOPIFY_CLI_TOKEN \
           --no-color \
           --json
