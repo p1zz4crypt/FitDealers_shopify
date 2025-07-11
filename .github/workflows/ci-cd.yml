@@ -164,4 +164,5 @@ jobs:
           --password $SHOPIFY_CLI_TOKEN \
           --publish \
           --no-color \
+          --force \
           --json
