@@ -11,8 +11,8 @@
     "error": "#FF3B3B"
   },
   "fonts": {
-    "heading": "'Inter', sans-serif",
-    "body": "'Inter', sans-serif"
+    "heading": "'Cabin', sans-serif",
+    "body": "'Cabin', sans-serif"
   },
   "fontSizes": {
     "xs": "12px",

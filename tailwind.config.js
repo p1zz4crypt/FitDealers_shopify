@@ -56,10 +56,10 @@ module.exports = {
       },
       "fontFamily": {
         "heading": [
-          "'Inter', sans-serif"
+          "'Cabin', sans-serif"
         ],
         "body": [
-          "'Inter', sans-serif"
+          "'Cabin', sans-serif"
         ]
       },
       "screens": {

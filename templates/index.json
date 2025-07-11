@@ -16,12 +16,12 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/fondo1.png",
-            "image_overlay_opacity": 0,
+            "image_overlay_opacity": 40,
             "show_stars": true,
             "stars_text": "4M+ clientes satisfechos",
-            "heading": "Elige tu meta,nosotros te damos el suplemento ideal.",
+            "heading": "Suplementos confiables para tu cuerpo, rendimiento y bienestar",
             "heading_size": "h1",
-            "subheading": "<p>Suplementos formulados por entrenadores para maximizar tu fuerza y recuperación.</p>",
+            "subheading": "<ul><li>- Cambia tu físico: baja grasa o gana músculo con guías por objetivo.</li><li>- Impulsa tu rendimiento: marcas probadas por atletas, sin placebos.</li><li>- Potencia tu bienestar: fórmulas limpias para energía y salud diaria.</li></ul>",
             "button_1_label": "EXPLORA SUPLUMENTOS PREMIUM",
             "button_1_link": "shopify://collections/all",
             "button_1_style_secondary": false,
@@ -30,7 +30,7 @@
             "button_2_style_secondary": true,
             "show_text_box": true,
             "box_align": "middle-left",
-            "text_box_max_width": 70,
+            "text_box_max_width": 30,
             "text_alignment": "left",
             "text_alignment_mobile": "center",
             "color_scheme": "scheme-4"
@@ -354,7 +354,7 @@
       "type": "banner-imagen-personalizado",
       "name": "Banner horizontal",
       "settings": {
-        "banner_image": "shopify://shop_images/Frame_55.png",
+        "banner_image": "shopify://shop_images/banner_1.png",
         "alt_text": ""
       }
     },

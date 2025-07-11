@@ -3,15 +3,15 @@
 
     <!-- Calificación + Clientes -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-lg font-light">
-      <div class="flex flex-col items-center border-r sm:pr-6 border-gray-600">
-        <div class="text-black text-4xl mb-1">★★★★★</div>
-        <div class="text-black text-xl">
+      <div class="flex flex-col items-center border-r sm:pr-6 border-gray-500">
+        <div class="text-black text-5xl mb-1">★★★★★</div>
+        <div class="text-black text-4xl">
           {{ section.settings.rating }} ({{ section.settings.reviews }})
         </div>
       </div>
-      <div class="text-black text-4xl font-medium">
+      <div class="text-black text-5xl font-medium">
         {{ section.settings.client_count }}
-        <div class="text-black text-xl">Clientes satisfechos</div>
+        <div class="text-black font-extralight text-4xl">Clientes satisfechos</div>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
       activeIndex: 0
     }" class="relative max-w-3xl mx-auto">
 
-      <div class="relative h-auto min-h-[160px] mx-6 px-6">
+      <div class="relative h-auto min-h-[100px] mx-6 px-6">
         <template x-for="(testimonial, index) in testimonials" :key="index">
           <div
             x-show="activeIndex === index"
@@ -50,14 +50,14 @@
         </template>
       </div>
 
-      <!-- Flechas laterales visibles y elegantes -->
+      <!-- Flechas  -->
       <div class="absolute top-1/2 left-[-2rem] transform -translate-y-1/2 z-10 ">
-        <button @click="activeIndex = (activeIndex - 1 + testimonials.length) % testimonials.length" class="mr-3  text-black p-2 rounded-full shadow hover:bg-black hover:text-gray-300 transition focus:outline-none">
+        <button @click="activeIndex = (activeIndex - 1 + testimonials.length) % testimonials.length" class="mr-3  text-black p-2 rounded-full hover:bg-black hover:text-gray-300 transition focus:outline-none">
           ⪡
         </button>
       </div>
       <div class="absolute top-1/2 right-[-2rem] transform -translate-y-1/2 z-10 ">
-        <button @click="activeIndex = (activeIndex + 1) % testimonials.length" class="ml-3  text-black p-2 rounded-full shadow hover:bg-black hover:text-gray-300 transition focus:outline-none">
+        <button @click="activeIndex = (activeIndex + 1) % testimonials.length" class="ml-3  text-black p-2 rounded-full hover:bg-black hover:text-gray-300 transition focus:outline-none">
           ⪢
         </button>
       </div>
