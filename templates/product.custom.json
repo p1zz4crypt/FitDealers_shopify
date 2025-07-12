@@ -1,39 +1,31 @@
+// templates/product.custom.json
 {
   "name": "Custom Product",
   "sections": {
+    // Sección de galería de medios (izquierda)
     "media": {
       "type": "product-media"
     },
+    // Sección de encabezado de producto (derecha)
     "header": {
       "type": "product-header"
-    },
-    // "variants": {
-    //   "type": "product-variants"
-    // },
-    // "price": {
-    //   "type": "product-price"
-    // },
-    // "nutrition": {
-    //   "type": "product-nutrition"
-    // },
-    // "purchase_plan": {
-    //   "type": "product-purchase-plan"
-    // },
-    // "buy_buttons": {
-    //   "type": "product-buy-buttons"
-    // },
-    // "reviews": {
-    //   "type": "product-reviews"
-    // }
+    }
+    // Puedes ir habilitando estas secciones más adelante:
+    // "variants": { "type": "product-variants" },
+    // "price": { "type": "product-price" },
+    // "nutrition": { "type": "product-nutrition" },
+    // "purchase_plan": { "type": "product-purchase-plan" },
+    // "buy_buttons": { "type": "product-buy-buttons" },
+    // "reviews": { "type": "product-reviews" }
   },
   "order": [
     "media",
-    "header",
-    // "variants",
-    // "price",
-    // "nutrition",
-    // "purchase_plan",
-    // "buy_buttons",
-    // "reviews"
+    "header"
+    // , "variants"
+    // , "price"
+    // , "nutrition"
+    // , "purchase_plan"
+    // , "buy_buttons"
+    // , "reviews"
   ]
 }

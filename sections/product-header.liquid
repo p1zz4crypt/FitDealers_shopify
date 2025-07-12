@@ -1,0 +1,73 @@
+{% comment %}
+sections/product-header.liquid
+Muestra el rating, título, vendor y badges basados en tags/metafields.
+{% endcomment %}
+
+<div class="product-header mb-8">
+  {%- if section.settings.show_rating -%}
+    {% assign avg = product.metafields.reviews.average_rating.value | default: 0 %}
+    {% assign cnt = product.metafields.reviews.reviews_count.value | default: 0 %}
+    <div class="flex items-center gap-2 text-yellow mb-2">
+      {%- for i in (1..5) -%}
+        <svg class="w-4 h-4 {% if i > avg | floor %}text-gray-300{% endif %}" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 …" />
+        </svg>
+      {%- endfor -%}
+      <span class="text-sm text-gray-600">({{ avg | round: 1 }}/5 · {{ cnt }} reseñas)</span>
+    </div>
+  {%- endif -%}
+
+  <h1 class="mt-1 text-3xl font-heading text-black">{{ product.title }}</h1>
+
+  {%- if section.settings.show_vendor -%}
+    <p class="text-sm text-gray-500">{{ product.vendor }}</p>
+  {%- endif -%}
+
+  <div class="flex flex-wrap gap-2 mt-3">
+    {% for tag in product.tags %}
+      {% case tag %}
+        {% when 'sin-azucar' %}
+          <span class="badge bg-gray-100 text-gray-800">Sin azúcar</span>
+        {% when 'vegano' %}
+          <span class="badge bg-green-100 text-green-800">Vegano</span>
+        {% when 'gluten-free' %}
+          <span class="badge bg-yellow-100 text-yellow-800">Gluten-Free</span>
+        {% else %}
+          {%- comment -%} Otros tags personalizados {%- endcomment -%}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Mostrar rating",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Mostrar marca (vendor)",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Header",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+/* Estilos extra para badges */
+.badge {
+  @apply px-2 py-1 rounded-full text-xs font-medium;
+}
+{% endstylesheet %}

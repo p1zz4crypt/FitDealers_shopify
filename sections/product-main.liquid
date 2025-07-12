@@ -1,0 +1,27 @@
+<div class="container mx-auto py-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {% for block in section.blocks %}
+      <div class="block block-{{ block.type }}">
+        {% case block.type %}
+          {% when 'media' %}
+            {% render 'product-media', product: product %}
+          {% when 'header' %}
+            {% render 'product-header', product: product %}
+        {% endcase %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Main",
+  "blocks": [
+    { "type": "media",  "name": "Galería de medios" },
+    { "type": "header", "name": "Encabezado de producto" }
+  ],
+  "presets": [
+    { "name": "Product Main", "category": "Product" }
+  ]
+}
+{% endschema %}
