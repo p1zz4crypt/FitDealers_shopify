@@ -1,19 +1,15 @@
-{% comment %} sections/product-main.liquid {% endcomment %}
 <div class="container mx-auto py-8">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <h1>kjfsjegpordsjffg</h1>
     {% for block in section.blocks %}
-  <div class="block block-{{ block.type }}">
-    {% case block.type %}
-      {% when 'media' %}
-        {% render 'product-media', product: product %}
-      {% when 'header' %}
-        {%- comment -%} Aquí invocamos product-header.liquid {%- endcomment -%}
-        {% render 'product-header', product: product %}
-    {% endcase %}
-  </div>
-{% endfor %}
-
+      <div class="block block-{{ block.type }}">
+        {% case block.type %}
+          {% when 'media' %}
+            {% render 'product-media', product: product %}
+          {% when 'header' %}
+            {% render 'product-header', product: product %}
+        {% endcase %}
+      </div>
+    {% endfor %}
   </div>
 </div>
 
@@ -24,7 +20,6 @@
     { "type": "media",  "name": "Galería de medios" },
     { "type": "header", "name": "Encabezado de producto" }
   ],
-  "settings": [],
   "presets": [
     { "name": "Product Main", "category": "Product" }
   ]

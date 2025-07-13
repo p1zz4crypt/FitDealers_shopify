@@ -1,15 +1,23 @@
 <div class="product-detail-ui max-w-3xl">
     {% comment %} Calificación y encabezado {% endcomment %}
-    {% assign rating = product.metafields.custom.calificacion | round: 1 %}
+    {% assign rating = product.metafields.reviews.average_rating.value.rating | round: 1 %}
+    {% assign reviews_count = product.metafields.reviews.reviews_count.value.count %}
+    
     {% if rating %}
     <div class="flex items-center gap-2 mb-4">
         {% for i in (1..5) %}
-        {% if i <= rating %} <span class="text-yellow-400 text-3xl">★</span>
-            {% else %}
+        {% if i <= rating %}
+            <span class="text-yellow-400 text-3xl">★</span>
+        {% else %}
             <span class="text-gray-300 text-xl">☆</span>
+        {% endif %}
+        {% endfor %}
+        <span class="text-lg text-gray-500">
+            ({{ rating }}/5)
+            {% if reviews_count %}
+                - {{ reviews_count }} {% if reviews_count == 1 %}reseña{% else %}reseñas{% endif %}
             {% endif %}
-            {% endfor %}
-            <span class="text-lg text-gray-500">({{ rating }}/5)</span>
+        </span>
     </div>
     {% endif %}
 
@@ -50,7 +58,6 @@
         {% endif %}
     </div>
 
-
     {% comment %} Nutrientes e ingredientes {% endcomment %}
     {% if product.metafields.custom.nutricion_ingredientes %}
     <details class="mb-6">
@@ -87,5 +94,4 @@
 
     {% render 'variant-cards' %}
 
-    
 </div>
