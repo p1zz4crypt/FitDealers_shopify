@@ -60,9 +60,9 @@
         "subscriptions_app_block_CXYCUR": {
           "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
           "settings": {
-            "color_text_body": "#6D7175",
-            "dividers_color": "#8F8D8D",
-            "bacgkround_color": "#FFFFFF",
+            "color_text_body": "#6d7175",
+            "dividers_color": "#8f8d8d",
+            "bacgkround_color": "#ffffff",
             "border_thickness": 1,
             "border_radius": 0,
             "subscription_policy_url": "",
@@ -253,6 +253,21 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "17525123789b9ddd30": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_te6MgR": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_te6MgR"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -261,6 +276,7 @@
     "productos_recomendados_8nFDRn",
     "image_with_text_AGKpiE",
     "impact_testimonials_Ktn6PB",
-    "collection_list_Jz43fT"
+    "collection_list_Jz43fT",
+    "17525123789b9ddd30"
   ]
 }
