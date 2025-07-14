@@ -12,7 +12,25 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "description": {
+        "rating_yaWMDG": {
+          "type": "rating",
+          "settings": {}
+        },
+        "title_9bwRNX": {
+          "type": "title",
+          "settings": {}
+        },
+        "sku_H8fchH": {
+          "type": "sku",
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "price_dq4N74": {
+          "type": "price",
+          "settings": {}
+        },
+        "description_qgPN8Y": {
           "type": "description",
           "settings": {}
         },
@@ -23,6 +41,11 @@
             "inventory_threshold": 10,
             "show_inventory_quantity": true
           }
+        },
+        "variant_picker_ARD7md": {
+          "type": "variant_picker",
+          "repeater": "{{ product.metafields.shopify.flavor.value }}",
+          "settings": {}
         },
         "quantity_selector": {
           "type": "quantity_selector",
@@ -37,8 +60,13 @@
         }
       },
       "block_order": [
-        "description",
+        "rating_yaWMDG",
+        "title_9bwRNX",
+        "sku_H8fchH",
+        "price_dq4N74",
+        "description_qgPN8Y",
         "inventory_P7driw",
+        "variant_picker_ARD7md",
         "quantity_selector",
         "buy_buttons"
       ],
@@ -171,8 +199,7 @@
       "name": "Sección con testimonios e impacto",
       "settings": {
         "headline": "Más de 2 millones de suplementos entregados",
-        "description": "<p>Descubre por qué la comunidad <strong>#FitDealers</strong> confía en nosotros para alcanzar sus metas.</p>",
-        "product_image": "shopify://shop_images/Image_fx_44.png"
+        "description": "<p>Descubre por qué la comunidad <strong>#FitDealers</strong> confía en nosotros para alcanzar sus metas.</p>"
       }
     },
     "collection_list_Jz43fT": {
