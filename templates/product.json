@@ -12,8 +12,8 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "rating_yaWMDG": {
-          "type": "rating",
+        "judge_me_reviews_preview_badge_EjTRFc": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {}
         },
         "title_9bwRNX": {
@@ -45,7 +45,10 @@
         "variant_picker_ARD7md": {
           "type": "variant_picker",
           "repeater": "{{ product.metafields.shopify.flavor.value }}",
-          "settings": {}
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
         },
         "quantity_selector": {
           "type": "quantity_selector",
@@ -60,7 +63,7 @@
         }
       },
       "block_order": [
-        "rating_yaWMDG",
+        "judge_me_reviews_preview_badge_EjTRFc",
         "title_9bwRNX",
         "sku_H8fchH",
         "price_dq4N74",
