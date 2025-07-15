@@ -37,7 +37,7 @@ slideshow-component .slideshow.banner {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 54.5rem;
+  max-width: 60rem;
 }
 
 .slideshow__text > * {
@@ -198,4 +198,40 @@ slideshow-component:not(.page-width) .slider-buttons {
   visibility: hidden;
   opacity: 0;
   transform: scale(0.8);
+}
+
+.banner__text:nth-of-type(2){
+  font-size: 2rem !important;
+}
+
+
+.banner__text:nth-of-type(3) ul{
+   list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.banner__text:nth-of-type(3) ul li {
+   position: relative;
+  padding-left: 1.8em;  
+  margin-bottom: 0.75em;           
+  font-size: 1.5rem;       
+  line-height: 1.4;
+
+}
+
+.banner__text:nth-of-type(3) ul li::before {
+  content: "✔";            
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.5em;         
+  line-height: 1;
+  color: #FFC800 !important; 
+          
+}
+
+.banner__text:nth-of-type(4) {
+  line-height: 1.4;
+  font-weight: bold;
 }

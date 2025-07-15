@@ -25,8 +25,6 @@
   {%- endstyle -%}
 {%- endif -%}
 
-
-
 <style>
    :root {
     --text-box-max-width: {{ section.settings.text_box_max_width }}rem;
@@ -35,7 +33,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 0 !important;
   }
 
   .slideshow__stars .star {
@@ -72,7 +70,7 @@
 </style>
 
 <slideshow-component
-  class="slider-mobile-gutter{% if section.settings.layout == 'grid' %} page-width{% endif %}{% if section.settings.show_text_below %} mobile-text-below{% endif %}"
+  class="slider-mobile-gutter{% if section.settings.layout == 'grid' %} {% endif %}{% if section.settings.show_text_below %} mobile-text-below{% endif %}"
   role="region"
   aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
   aria-label="{{ section.settings.accessibility_info | escape }}"
@@ -204,7 +202,7 @@
             {%- endif -%}
           {%- endif -%}
         </div>
-        <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} page-width{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll and forloop.index == 1 %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} {% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll and forloop.index == 1 %} scroll-trigger animate--slide-in{% endif %}">
           <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
             {%- comment -%} Sección de estrellas {%- endcomment -%}
             {%- if block.settings.show_stars and block.settings.stars_text != blank -%}
@@ -222,8 +220,18 @@
               </h2>
             {%- endif -%}
             {%- if block.settings.subheading != blank -%}
-              <div class="banner__text rte">
+              <div class="banner__text rte text-3xl">
                 <p>{{ block.settings.subheading }}</p>
+              </div>
+            {%- endif -%}
+            {%- if block.settings.subheading_2 != blank -%}
+              <div class="banner__text font-light rte color-{{ block.settings.color_scheme_subheading_2 }}">
+                <p >{{ block.settings.subheading_2 }}</p>
+              </div>
+            {%- endif -%}
+            {%- if block.settings.subheading_3 != blank -%}
+              <div class="banner__text rte color-{{ block.settings.color_scheme_subheading_3 }}">
+                <p>{{ block.settings.subheading_3 }}</p>
               </div>
             {%- endif -%}
 
@@ -258,7 +266,7 @@
                   <a
                     href="{{ block.settings.button_2_link }}"
                     class="
-                                                                 button {% if block.settings.button_2_style_secondary %}button--secondary{% else %}button--primary{% endif %}
+                                                                                       button {% if block.settings.button_2_style_secondary %}button--secondary{% else %}button--primary{% endif %}
                     "
                     style="background-color: #000000 ; color: #FFC800 ;"
                   >
@@ -549,6 +557,34 @@
           "id": "subheading",
           "default": "t:sections.slideshow.blocks.slide.settings.subheading.default",
           "label": "t:sections.slideshow.blocks.slide.settings.subheading.label"
+        },
+          {
+          "type": "color_scheme",
+          "id": "color_scheme_subheading",
+          "label": "Esquema de color para Subtítulo 1",
+          "default": "scheme-1"
+        },
+        {
+          "type": "richtext",
+          "id": "subheading_2",
+          "label": "Subtítulo 2"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme_subheading_2",
+          "label": "Esquema de color para Subtítulo 2",
+          "default": "scheme-1"
+        },
+        {
+          "type": "richtext",
+          "id": "subheading_3",
+          "label": "Subtítulo 3"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme_subheading_3",
+          "label": "Esquema de color para Subtítulo 3",
+          "default": "scheme-1"
         },
         {
           "type": "header",

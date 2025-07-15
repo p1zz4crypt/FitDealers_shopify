@@ -12,9 +12,9 @@
     "logo": "shopify://shop_images/Capa_1_6ab57ef6-52c8-4f24-a91f-cb30587b27f0.png",
     "logo_width": 50,
     "favicon": "shopify://shop_images/Capa_1_6ab57ef6-52c8-4f24-a91f-cb30587b27f0.png",
-    "type_header_font": "assistant_n4",
+    "type_header_font": "questrial_n4",
     "heading_scale": 100,
-    "type_body_font": "assistant_n4",
+    "type_body_font": "questrial_n4",
     "body_scale": 100,
     "page_width": 1200,
     "spacing_sections": 0,
@@ -50,7 +50,7 @@
     "card_border_thickness": 0,
     "card_border_opacity": 10,
     "card_corner_radius": 0,
-    "card_shadow_opacity": 0,
+    "card_shadow_opacity": 5,
     "card_shadow_horizontal_offset": 0,
     "card_shadow_vertical_offset": 4,
     "card_shadow_blur": 5,
@@ -123,11 +123,11 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "currency_code_enabled": true,
-    "cart_type": "notification",
-    "show_vendor": false,
-    "show_cart_note": false,
+    "cart_type": "drawer",
+    "show_vendor": true,
+    "show_cart_note": true,
     "cart_drawer_collection": "",
-    "cart_color_scheme": "scheme-1",
+    "cart_color_scheme": "scheme-4",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -146,20 +146,31 @@
         "settings": {
           "prefix_text": "🚀 Nuevos clientes:",
           "discount_amount": "15% off",
-          "code_text": "WELCOME TEST CI CD",
+          "code_text": "WELCOME",
           "link": "shopify://collections/all"
         }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {}
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
           "background": "#f3f3f3",
           "background_gradient": "",
-          "text": "#121212",
+          "text": "#000000",
           "button": "#121212",
-          "button_label": "#ffffff",
+          "button_label": "#000000",
           "secondary_button_label": "#121212",
           "shadow": "#121212"
         }
@@ -210,9 +221,9 @@
       },
       "scheme-0ef0ce03-a4d5-49c9-aaf1-bb40065b9361": {
         "settings": {
-          "background": "#ffc800",
+          "background": "#000000",
           "background_gradient": "",
-          "text": "#121212",
+          "text": "#ffc800",
           "button": "#ffc800",
           "button_label": "#ffffff",
           "secondary_button_label": "#ffc800",
