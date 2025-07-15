@@ -86,6 +86,10 @@
         </li>
       {%- endif -%}
       {%- for media in product.media -%}
+        {{ media | json }}
+        {%- if media.media_type == "image" and media.attached_to_variant? -%}
+          
+        {%- endif -%}
         {% if media_position >= limit
           or media_position >= 1
           and section.settings.hide_variants

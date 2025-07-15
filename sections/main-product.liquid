@@ -552,7 +552,7 @@
                             class="contains-card contains-card--product complementary-slider grid grid--1-col slider slider--everywhere"
                             role="list"
                             {% if number_of_slides > 1 %}
-                              aria-label="{{ 'general.slider.name' | t }}"
+                             aria-label="{{ recommendations.products[0].title }}"
                             {% endif %}
                           >
                             {% assign skip_card_product_styles = false %}
