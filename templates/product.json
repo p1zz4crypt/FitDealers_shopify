@@ -42,9 +42,8 @@
             "show_inventory_quantity": true
           }
         },
-        "variant_picker_ARD7md": {
+        "variant_picker_MLALBb": {
           "type": "variant_picker",
-          "repeater": "{{ product.metafields.shopify.flavor.value }}",
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
@@ -81,7 +80,7 @@
         "price_dq4N74",
         "description_qgPN8Y",
         "inventory_P7driw",
-        "variant_picker_ARD7md",
+        "variant_picker_MLALBb",
         "quantity_selector",
         "buy_buttons",
         "subscriptions_app_block_CXYCUR"

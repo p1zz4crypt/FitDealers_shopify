@@ -151,23 +151,6 @@
               id="title-{{ section_id }}-{{ card_product.id }}"
             {% endif %}
           >
-            <a
-              href="{{ card_product.url }}"
-              id="CardLink-{{ section_id }}-{{ card_product.id }}"
-              class="full-unstyled-link"
-              aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
-            >
-              {{ card_product.title | escape }}
-            </a>
-          </h3>
-          <div class="card-information">
-            {%- if show_vendor -%}
-              <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
-              <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
-            {%- endif -%}
-
-            <span class="caption-large light">{{ block.settings.description | escape }}</span>
-
             {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
               {% liquid
                 assign rating_decimal = 0
@@ -203,6 +186,22 @@
                 </span>
               </p>
             {%- endif -%}
+            <a
+              href="{{ card_product.url }}"
+              id="CardLink-{{ section_id }}-{{ card_product.id }}"
+              class="full-unstyled-link"
+              aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
+            >
+              {{ card_product.title | escape }}
+            </a>
+          </h3>
+          <div class="card-information">
+            {%- if show_vendor -%}
+              <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+              <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
+            {%- endif -%}
+
+            <span class="caption-large light">{{ block.settings.description | escape }}</span>
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
             {%- if card_product.quantity_price_breaks_configured? -%}
@@ -301,14 +300,19 @@
               <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
                 <button
                   id="{{ product_form_id }}-submit"
+                  style="cursor: pointer;"
                   type="submit"
                   name="add"
-                  class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add animate-arrow{% endif %}"
+                  class="w-full bg-yellow-400 text-black font-semibold py-3 rounded hover:opacity-90 transition{% if horizontal_quick_add %} card--horizontal__quick-add animate-arrow{% endif %}"
                   aria-haspopup="dialog"
                   aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                   data-product-url="{{ card_product.url }}"
+                  aria-live="polite"
+                  {% unless card_product.selected_or_first_available_variant.available %}
+                    disabled
+                  {% endunless %}
                 >
-                  {{ 'products.product.choose_options' | t }}
+                  {{ 'products.product.add_to_cart' | t }}
                   {%- if horizontal_quick_add -%}
                     <span class="icon-wrap">
                       {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -510,7 +514,7 @@
                       </div>
                       <div class="quick-add-modal__content-info--bulk-details large-up-hide">
                         <a href="{{ card_product.url }}" class="full-unstyled-link">
-                          <h3>{{ card_product.title | escape }}</h3>
+                          <h3 class="font-extrabold">{{ card_product.title | escape }}</h3>
                         </a>
                         {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
                         {%- if card_product.quantity_price_breaks_configured? -%}
@@ -605,7 +609,7 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
+          <h3 class="card__heading font-extrabold card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
             <a role="link" aria-disabled="true" class="full-unstyled-link">
               {{ 'onboarding.product_title' | t }}
             </a>
