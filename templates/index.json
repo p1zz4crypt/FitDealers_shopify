@@ -235,7 +235,7 @@
         "color_scheme": "",
         "image_ratio": "square",
         "image_shape": "default",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "show_vendor": true,
         "show_rating": true,
         "quick_add": "standard",
@@ -293,9 +293,15 @@
         "featured_collection_ArTGYP",
         "featured_collection_MzVCMh"
       ],
+      "custom_css": [
+        "img {padding: 10px; border-radius: 100%;}",
+        "a {padding: 0 10px; text-align: center;}",
+        "svg {display: none;}"
+      ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "Explora por categoría",
+        "subtitle": "",
         "heading_size": "h1",
         "image_ratio": "square",
         "columns_desktop": 6,
@@ -355,9 +361,14 @@
         "featured_collection_PWQwjk",
         "featured_collection_bV69En"
       ],
+      "custom_css": [
+        "svg {display: none;}",
+        "a {position: absolute; top: 50%; left: 5%; color: #ffffff; font-size: 4.5rem; line-height: 50px;}"
+      ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "Colecciones",
+        "subtitle": "<p>¿Buscas ganar músculo, quemar grasa, elevar tu energía o cuidar tu salud día tras día?</p><p>En <strong>The Fit Dealers</strong> encontrarás suplementos de alta calidad que realmente marcan la diferencia.</p>",
         "heading_size": "h1",
         "image_ratio": "square",
         "columns_desktop": 3,
@@ -373,8 +384,35 @@
       "type": "banner-imagen-personalizado",
       "name": "Banner horizontal",
       "settings": {
-        "banner_image": "shopify://shop_images/banner_1.png",
+        "banner_image": "shopify://shop_images/banner_2.png",
         "alt_text": ""
+      }
+    },
+    "custom_liquid_XdL4xe": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<section class=\"w-full fit-dealers-accion pt-12 text-center bg-gray-50\">\n  <div class=\"w-full container mx-auto\">\n    <h1 class=\"w-full text-3xl sm:text-4xl font-extrabold mb-2\">\n      Resultados Reales, Clientes Reales\n    </h1>\n    <p class=\"text-lg sm:text-4xl text-gray-700\">\n      Envíanos tu foto o video con el hashtag <strong>#FitDealersEnAcción</strong>\n      y únete a quienes ya entrenan sin límites.\n    </p>\n  </div>\n</section>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 16
+      }
+    },
+    "175262573111aa7f55": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_gFxkGX": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_gFxkGX"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "client_testimonials_dGaN8p": {
@@ -442,59 +480,13 @@
         "testimonial_rXfcJw",
         "testimonial_XWMKPj"
       ],
+      "disabled": true,
       "name": "Testimonios visuales",
       "settings": {
         "title": "Resultados Reales, Clientes Reales",
         "subtitle": "<p>Envíanos tu foto o video con el hashtag <strong>#FitDealersEnAcción</strong> y únete a quienes ya entrenan sin límites.</p>",
         "cta_text": "Ver Todos",
         "cta_url": ""
-      }
-    },
-    "1752619777e904b81b": {
-      "type": "apps",
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "1752631269866007ef": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_testimonials_carousel_jcGFYd": {
-          "type": "shopify://apps/judge-me-reviews/blocks/testimonials_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "show_sample_reviews": true,
-            "reviews_selection": "all",
-            "products": [],
-            "star_rating": "all",
-            "max_reviews": 20,
-            "quote_marks_size": "small",
-            "product_name_text_size": "small",
-            "verified_badge_style": "icon",
-            "card_height": "medium",
-            "text_size": "small",
-            "stars_size": "medium",
-            "arrows_position": "bottom",
-            "max_width": 1100,
-            "corner_styling": "soft",
-            "quote_marks_style": "serif",
-            "card_color": "#F9F9F9",
-            "stars_and_quote_marks_color": "#108474",
-            "text_color": "#000000",
-            "arrows_color": "#000000",
-            "show_border": false,
-            "border_color": "#108474",
-            "show_drop_shadow": false,
-            "transition_speed": 5,
-            "header_text": "Customers are saying",
-            "show_average_rating": true
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_testimonials_carousel_jcGFYd"
-      ],
-      "settings": {
-        "include_margins": true
       }
     }
   },
@@ -506,8 +498,6 @@
     "collection_list_W8CHRb",
     "collection_list_gJzPEz",
     "banner_imagen_personalizado_Xe4t6e",
-    "client_testimonials_dGaN8p",
-    "1752619777e904b81b",
-    "1752631269866007ef"
+    "client_testimonials_dGaN8p"
   ]
 }
