@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '0 8 * * *' # Cada día a las 8 AM UTC
 
+permissions:
+  contents: write
+
 env:
   SHOPIFY_STORE_URL: radianz-store.myshopify.com
   THEME_PROD_ID: 152685609175
@@ -19,6 +22,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,7 +37,7 @@ jobs:
           SHOPIFY_CLI_TOKEN: ${{ secrets.SHOPIFY_CLI_TOKEN }}
           SHOPIFY_FLAG_STORE: ${{ env.SHOPIFY_STORE_URL }}
         run: |
-          echo "📥 Pulling theme from PRODUCTION..."
+          echo "📥 Pulling theme from Shopify..."
           shopify theme pull \
             --theme ${{ env.THEME_PROD_ID }} \
             --store $SHOPIFY_FLAG_STORE \
@@ -41,10 +45,31 @@ jobs:
             --path . \
             --no-color
 
+      - name: Check for Changes
+        id: check_changes
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No changes detected from Shopify panel"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changes detected from Shopify panel"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            git status --porcelain
+          fi
+
       - name: Commit and Push Changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "shopify-sync-bot"
           git config user.email "shopify-bot@example.com"
           git add .
-          git diff --cached --quiet || git commit -m "📥 Sync from Shopify Theme PRODUCTION"
+          git commit -m "📥 Sync from Shopify Theme PRODUCTION - $(date '+%Y-%m-%d %H:%M:%S UTC')"
           git push origin main
+          echo "✅ Changes successfully synced from Shopify panel"
+
+      - name: No Changes
+        if: steps.check_changes.outputs.has_changes == 'false'
+        run: |
+          echo "ℹ️ No changes to sync - Shopify theme is already up to date"
