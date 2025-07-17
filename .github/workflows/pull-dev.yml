@@ -3,7 +3,9 @@ name: Pull from Shopify (DEV)
 on:
   workflow_dispatch:  # Para ejecutarlo manualmente desde GitHub
   schedule:
-    - cron: '*/5 * * * *' # Cada 5 minutos para prueba inmediata
+    - cron: '*/10 * * * *' # Cada 10 minutos para prueba inmediata
+  push:
+    branches: [dev]  # Solo se ejecuta cuando hay cambios en dev
 
 permissions:
   contents: write

@@ -4,6 +4,8 @@ on:
   workflow_dispatch:  # Para ejecutarlo manualmente desde GitHub
   schedule:
     - cron: '0 8 * * *' # Cada día a las 8 AM UTC
+  push:
+    branches: [main]  # Solo se ejecuta cuando hay cambios en main
 
 permissions:
   contents: write
