@@ -1,0 +1,50 @@
+name: Pull from Shopify (STAGE)
+
+on:
+  workflow_dispatch:  # Para ejecutarlo manualmente desde GitHub
+  schedule:
+    - cron: '0 6 * * *' # Cada día a las 6 AM UTC
+
+env:
+  SHOPIFY_STORE_URL: radianz-store.myshopify.com
+  THEME_STAGE_ID: 152976457943
+
+jobs:
+  pull-stage:
+    name: Pull Theme STAGE
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          ref: stage
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli @shopify/theme
+
+      - name: Pull from Shopify
+        env:
+          SHOPIFY_CLI_TOKEN: ${{ secrets.SHOPIFY_CLI_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ env.SHOPIFY_STORE_URL }}
+        run: |
+          echo "📥 Pulling theme from STAGE..."
+          shopify theme pull \
+            --theme ${{ env.THEME_STAGE_ID }} \
+            --store $SHOPIFY_FLAG_STORE \
+            --password $SHOPIFY_CLI_TOKEN \
+            --path . \
+            --no-color
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "shopify-sync-bot"
+          git config user.email "shopify-bot@example.com"
+          git add .
+          git diff --cached --quiet || git commit -m "📥 Sync from Shopify Theme STAGE"
+          git push origin stage

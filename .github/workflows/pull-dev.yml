@@ -1,0 +1,50 @@
+name: Pull from Shopify (DEV)
+
+on:
+  workflow_dispatch:  # Para ejecutarlo manualmente desde GitHub
+  schedule:
+    - cron: '0 */4 * * *' # Cada 4 horas para mayor sincronización
+
+env:
+  SHOPIFY_STORE_URL: radianz-store.myshopify.com
+  THEME_DEV_ID: 152975179991
+
+jobs:
+  pull-dev:
+    name: Pull Theme DEV
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli @shopify/theme
+
+      - name: Pull from Shopify
+        env:
+          SHOPIFY_CLI_TOKEN: ${{ secrets.SHOPIFY_CLI_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ env.SHOPIFY_STORE_URL }}
+        run: |
+          echo "📥 Pulling theme..."
+          shopify theme pull \
+            --theme ${{ env.THEME_DEV_ID }} \
+            --store $SHOPIFY_FLAG_STORE \
+            --password $SHOPIFY_CLI_TOKEN \
+            --path . \
+            --no-color
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "shopify-sync-bot"
+          git config user.email "shopify-bot@example.com"
+          git add .
+          git diff --cached --quiet || git commit -m "📥 Sync from Shopify Theme DEV"
+          git push origin dev
