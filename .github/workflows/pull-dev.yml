@@ -3,7 +3,7 @@ name: Pull from Shopify (DEV)
 on:
   workflow_dispatch:  # Para ejecutarlo manualmente desde GitHub
   schedule:
-    - cron: '0 */4 * * *' # Cada 4 horas para mayor sincronización
+    - cron: '*/5 * * * *' # Cada 5 minutos para prueba inmediata
 
 env:
   SHOPIFY_STORE_URL: radianz-store.myshopify.com
